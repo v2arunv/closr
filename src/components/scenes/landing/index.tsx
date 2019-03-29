@@ -12,8 +12,13 @@ export default class LandingPage extends Component<Props> {
                <Text onPress={() => {
                    this.props.navigation.navigate('Profile')
                }}>
-                   Landing Page
+                   User Profile
                </Text>
+                <Text onPress={() => {
+                    this.props.navigation.navigate('Todos')
+                }}>
+                    Todos
+                </Text>
             </View>
         );
     }

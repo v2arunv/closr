@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import { container } from './styles';
+import { container } from '../todos/styles';
 
 interface Props {
     navigation: any
