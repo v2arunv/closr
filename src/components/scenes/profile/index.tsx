@@ -28,8 +28,13 @@ class ProfilePage extends Component<Props> {
     }
 }
 
+const mapStateToProps = (state: any) => {
+    console.log('state', state);
+    return state;
+};
+
 const mapDispatchToProps = {
     getUser: getUser
 };
 
-export default connect(null, mapDispatchToProps)(ProfilePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
