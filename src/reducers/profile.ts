@@ -44,7 +44,6 @@ const profile = (state:IUserState = initialState, action: IUserAction): IUserSta
                 user: null,
             };
         case 'GET_USER_SUCCESS':
-            console.log('action', action);
             return {
                 loading: false,
                 error: false,
