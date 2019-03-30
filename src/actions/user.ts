@@ -5,9 +5,8 @@ export interface IUserAction {
     user: IUser,
 }
 
-export const setUser = (user: IUser): IUserAction => {
+export const getUser = (): IUserAction => {
     return <IUserAction> {
-        type: 'SET_USER',
-        user: user,
+        type: 'GET_USER',
     }
 };

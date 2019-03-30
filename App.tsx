@@ -9,17 +9,26 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import ProfilePage from "./src/components/scenes/profile";
 import LandingPage from "./src/components/scenes/landing";
 import TodosPage from "./src/components/scenes/todos";
 import reducer from './src/reducers/';
-import { createStore } from 'redux'
+import {applyMiddleware, compose, createStore} from 'redux'
 import { Provider } from 'react-redux'
+import {composeWithDevTools, devToolsEnhancer} from "redux-devtools-extension";
+import createSagaMiddleware from "redux-saga";
+import rootSaga from './src/sagas';
 
-const store = createStore(reducer);
+const sagaMiddleware = createSagaMiddleware();
 
+
+const store = createStore(
+    reducer,
+    composeWithDevTools(applyMiddleware((sagaMiddleware)))
+);
+
+sagaMiddleware.run(rootSaga);
 
 const AppNavigator = createStackNavigator({
     Landing: LandingPage,
