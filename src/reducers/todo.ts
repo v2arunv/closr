@@ -13,7 +13,7 @@ const initialState: Array<ITodo> = [{
     completed: false,
 }];
 
-const todos = (state:Array<ITodo> = initialState, action: ITodoAction): Array<ITodo> => {
+const todo = (state:Array<ITodo> = initialState, action: ITodoAction): Array<ITodo> => {
     switch (action.type) {
         case 'ADD_TODO':
             return [
@@ -36,4 +36,4 @@ const todos = (state:Array<ITodo> = initialState, action: ITodoAction): Array<IT
     }
 };
 
-export default todos
+export default todo

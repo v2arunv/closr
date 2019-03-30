@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import todos from "./todos";
+import todo from "./todo";
+import user from './profile'
 
 export default combineReducers({
-    todos,
+    todo: todo,
+    user: user,
 })

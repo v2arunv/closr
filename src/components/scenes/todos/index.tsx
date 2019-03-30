@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import { connect } from 'react-redux';
-import { container, listStyle } from './styles';
+import { container } from './styles';
 import {ITodo} from "../../../models/todo";
 
 interface Props {
@@ -19,7 +19,7 @@ class TodosPage extends Component<Props> {
                 <Text>
                     Todo
                 </Text>
-                <View style={listStyle}>
+                <View>
                     { this.props.todos.map(t => {
                         return (
                             <Text>
