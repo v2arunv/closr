@@ -5,15 +5,20 @@ import {IUser} from "../../../models/users";
 import {ITodo} from "../../../models/todo";
 import {getUser} from "../../../actions/user";
 import {connect} from "react-redux";
+import {IUserState} from "../../../reducers/profile";
 
 interface Props {
     navigation: any,
-    user: IUser
+    user: IUser,
     getUser: any,
 }
 class ProfilePage extends Component<Props> {
     constructor(props: Props) {
         super(props);
+    }
+
+    componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<{}>, snapshot?: any): void {
+        console.log(this.props.user);
     }
 
     render() {
@@ -22,15 +27,22 @@ class ProfilePage extends Component<Props> {
                 <Text>
                     Here's your best friend in the world
                 </Text>
-                <Button title={'FETCH'} onPress={this.props.getUser}/>
+                <Button title={'FETCH'} onPress={() => {
+                    this.props.getUser('10')
+                }}/>
             </View>
         );
     }
 }
 
 const mapStateToProps = (state: any) => {
-    console.log('state', state);
-    return state;
+    const userState = state.user;
+    const { user, loading, error } = userState;
+    return {
+        user,
+        loading,
+        error,
+    };
 };
 
 const mapDispatchToProps = {

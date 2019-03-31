@@ -1,7 +1,7 @@
 import {IUser} from "../models/users";
 import {IUserAction} from "../actions/user";
 
-interface IUserState {
+export interface IUserState {
     loading: boolean,
     error: boolean,
     user?: IUser | null,

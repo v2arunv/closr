@@ -6,9 +6,9 @@ export interface IUserAction {
     id?: string,
 }
 
-export const getUser = (): IUserAction => {
+export const getUser = (id: string): IUserAction => {
     return <IUserAction> {
         type: 'GET_USER',
-        id: '10',
+        id,
     }
 };
