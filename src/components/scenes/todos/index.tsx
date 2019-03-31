@@ -35,6 +35,6 @@ class TodosPage extends Component<Props> {
 
 const mapStateToProps = (state: any): Array<ITodo> => {
     return state;
-}
+};
 
 export default connect(mapStateToProps)(TodosPage);

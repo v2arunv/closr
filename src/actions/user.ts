@@ -2,12 +2,13 @@ import {IUser} from "../models/users";
 
 export interface IUserAction {
     type: string,
-    user: IUser,
+    user?: IUser,
+    id?: string,
 }
 
-export const setUser = (user: IUser): IUserAction => {
+export const getUser = (id: string): IUserAction => {
     return <IUserAction> {
-        type: 'SET_USER',
-        user: user,
+        type: 'GET_USER',
+        id,
     }
 };

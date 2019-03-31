@@ -14,7 +14,8 @@
     "react-native-gesture-handler": "^1.1.0",
     "react-navigation": "^3.5.1",
     "react-redux": "^6.0.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",
@@ -25,10 +26,11 @@
     "@types/react-native": "0.57.41",
     "@types/react-test-renderer": "16.8.1",
     "babel-jest": "24.5.0",
-    "eslint": "5.15.3",
+    "eslint": "^5.15.3",
     "jest": "24.5.0",
     "metro-react-native-babel-preset": "0.53.1",
     "react-test-renderer": "16.8.3",
+    "redux-devtools-extension": "^2.13.8",
     "typescript": "3.3.4000"
   },
   "jest": {
