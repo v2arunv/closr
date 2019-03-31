@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {Button, Platform, StyleSheet, Text, View} from 'react-native';
-import { container } from '../todos/styles';
 import {IUser} from "../../../models/users";
-import {ITodo} from "../../../models/todo";
 import {getUser} from "../../../actions/user";
 import {connect} from "react-redux";
-import {IUserState} from "../../../reducers/profile";
+import styles from "./styles";
 
 interface Props {
     navigation: any,
@@ -23,7 +21,7 @@ class ProfilePage extends Component<Props> {
 
     render() {
         return (
-            <View style={container}>
+            <View style={styles.container}>
                 <Text>
                     Here's your best friend in the world
                 </Text>
