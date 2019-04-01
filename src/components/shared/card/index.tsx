@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import styles from "./styles";
 import CardHeader from "../cardHeader";
+import CardComment from "../cardComment";
 
 const Card = (props: any) => {
     return (
@@ -14,6 +15,9 @@ const Card = (props: any) => {
             </View>
             <View style={styles.content}>
                 {props.children}
+            </View>
+            <View style={styles.comments}>
+                <CardComment/>
             </View>
         </View>
     )

@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import common from '../../../common/styles';
 
 const styles = StyleSheet.create({
     container: {
@@ -9,7 +10,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        borderBottomColor: '#dfdfdf',
+        borderBottomColor: common.borderColor,
         borderBottomWidth: 0.5,
     },
     pictureContainer: {

@@ -19,8 +19,10 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 5,
-        backgroundColor: '#be5bff',
     },
+    comments: {
+        flex: 2,
+    }
 });
 
 export default styles
