@@ -18,6 +18,7 @@ import { Provider } from 'react-redux'
 import {composeWithDevTools, devToolsEnhancer} from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from './src/sagas';
+import FeedPage from "./src/components/scenes/feed";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -32,6 +33,7 @@ sagaMiddleware.run(rootSaga);
 const AppNavigator = createStackNavigator({
     Landing: LandingPage,
     Profile: ProfilePage,
+    Feed: FeedPage,
 }, {
     initialRouteName: "Landing"
 });

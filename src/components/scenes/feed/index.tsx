@@ -1,25 +1,26 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 import styles from './styles';
+import Card from "../../shared/feedCard";
 
 interface Props {
     navigation: any
 }
-export default class LandingPage extends Component<Props> {
+class FeedPage extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                <Text onPress={() => {
-                    this.props.navigation.navigate('Profile')
-                }}>
-                    User Profile
-                </Text>
-                <Text onPress={() => {
-                    this.props.navigation.navigate('Todos')
-                }}>
-                    Todos
-                </Text>
+                <ScrollView>
+                    <Card></Card>
+                    <Card></Card>
+                    <Card></Card>
+                    <Card></Card>
+                    <Card></Card>
+                </ScrollView>
+
             </View>
         );
     }
 }
+
+export default FeedPage;
