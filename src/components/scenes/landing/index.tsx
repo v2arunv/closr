@@ -10,7 +10,9 @@ export default class LandingPage extends Component<Props> {
         return (
             <View style={styles.container}>
                <Text onPress={() => {
-                   this.props.navigation.navigate('Profile')
+                   this.props.navigation.navigate('Profile', {
+                       userId: 1,
+                   })
                }}>
                    User Profile
                </Text>

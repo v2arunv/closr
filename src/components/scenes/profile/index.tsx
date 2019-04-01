@@ -9,16 +9,16 @@ import styles from "./styles";
 
 interface Props {
     navigation: any,
-    user: IUser,
     getUser: any,
+    userId: number
 }
 class ProfilePage extends Component<Props> {
     constructor(props: Props) {
         super(props);
     }
 
-    componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<{}>, snapshot?: any): void {
-        console.log(this.props.user);
+    componentDidMount(): void {
+        console.log(this.props.navigation.getParam('userId', null));
     }
 
     render() {
