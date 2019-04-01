@@ -1,11 +1,14 @@
 import {IPost} from "../models/posts";
 import {IFeedAction} from "../actions/feed";
+import {IUser} from "../models/users";
+import _ from 'lodash';
+import posts from "../../mocks/posts";
 
 export interface IFeedState {
     isLoading: boolean,
     isError: boolean,
     posts: Array<IPost> | null,
-    users: {},
+    users: any,
 }
 
 const initialState = {
@@ -13,6 +16,14 @@ const initialState = {
     isError: false,
     posts: [],
     users: {},
+};
+
+const convertUserArrayPayloadIntoLookupMap = (users: Array<IUser> = []) => {
+    return _.reduce(users, (acc: any, val: IUser) => {
+        return {
+            [val.id]: val,
+        };
+    }, {})
 };
 
 const feed = (state = initialState, action: IFeedAction): IFeedState => {
@@ -24,11 +35,12 @@ const feed = (state = initialState, action: IFeedAction): IFeedState => {
                 isLoading: true,
             };
         case 'GET_POSTS_SUCCESS':
-            console.log('feed success', action.posts);
+            console.log('feed success', action);
             return {
                 ...state,
                 isLoading: false,
                 posts: action.posts || [],
+                users: convertUserArrayPayloadIntoLookupMap(action.users),
             };
         case 'GET_POSTS_ERROR':
             return {
