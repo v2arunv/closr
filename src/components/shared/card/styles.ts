@@ -5,11 +5,17 @@ const styles = StyleSheet.create({
         minHeight: 150,
         marginTop: 10,
         flex: 1,
-        backgroundColor: 'red'
+        backgroundColor: '#FFFFFF',
+        borderBottomColor: '#ddd',
+        borderBottomWidth: 0,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        elevation: 1,
     },
     header: {
         flex: 2,
-        backgroundColor: '#5dff1d',
     },
     content: {
         flex: 5,

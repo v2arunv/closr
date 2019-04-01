@@ -1,19 +1,18 @@
 import React from 'react';
 import {
     Image,
-    ImageRequireSource,
-    ImageURISource,
-    View
+    View,
+    Text
 } from 'react-native';
 import styles from "./styles";
 
 interface IHeaderProfileProps {
     name: string,
-    dpURL: ImageURISource | ImageURISource[] | ImageRequireSource,
+    dpURL: string,
 }
 
 
-const HeaderProfile = (props: IHeaderProfileProps) => {
+const CardHeader = (props: IHeaderProfileProps) => {
 
     return (
         <View
@@ -24,17 +23,20 @@ const HeaderProfile = (props: IHeaderProfileProps) => {
             >
                 <Image
                     style={styles.picture}
-                    source={props.dpURL}
+                    source={{ uri: props.dpURL}}
                     defaultSource={require('../../../assets/images/dp_placeholder.jpg')}
                 />
             </View>
             <View
                 style={styles.nameContainer}
             >
+                <Text style={styles.name}>
+                    {props.name}
+                </Text>
 
             </View>
         </View>
     )
 };
 
-export default HeaderProfile;
+export default CardHeader;
