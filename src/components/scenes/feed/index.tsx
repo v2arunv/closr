@@ -1,32 +1,90 @@
 import React, {Component} from 'react';
 import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 import styles from './styles';
-import Card from "../../shared/card";
-import CardText from "../../shared/cardText";
-import MockUser from '../../../../mocks/users';
+import Card from '../../shared/card';
+import CardText from '../../shared/cardText';
 import MockComments from '../../../../mocks/comments';
-interface Props {
-    navigation: any
+import {getPosts} from "../../../actions/feed";
+import {connect} from 'react-redux';
+import {IFeedState} from '../../../reducers/feed';
+import _ from 'lodash';
+import {IComment} from '../../../models/comments';
+import {IUser} from '../../../models/users';
+
+interface IProps {
+    navigation: any,
+    getPosts: () => void,
+    feedState: IFeedState,
 }
-const user = MockUser;
+interface ICardInfo {
+    comments: Array<IComment>,
+    user: IUser,
+    body: string,
+}
+
+interface IState {
+    cards: Array<ICardInfo>
+}
+
 const comments = [MockComments];
 
-class FeedPage extends Component<Props> {
+class FeedPage extends Component<IProps, IState> {
+    constructor(props: IProps) {
+        super(props);
+        this.state = {
+            cards: [],
+        }
+    }
+
+    componentDidMount(): void {
+        this.props.getPosts();
+    }
+
+    prepareFeed() {
+        const {
+            feedState
+        } = this.props;
+        const cards: Array<ICardInfo> = feedState.posts.map((post) => {
+            return {
+                comments: feedState.comments[post.id],
+                user: feedState.users[post.userId],
+                body: post.body,
+            }
+        });
+        this.setState({
+            ...this.state,
+            cards,
+        });
+    }
+
+    componentDidUpdate(prevProps: Readonly<IProps>, prevState: Readonly<{}>, snapshot?: any): void {
+        if (
+            !_.get(this, 'props.feedState.isLoading', false) &&
+            prevProps.feedState.isLoading == true
+        ) {
+            this.prepareFeed()
+        }
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <Card
-                        user={user}
-                        comments={comments}
-                    >
-                        <CardText>
-                            <Text>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </Text>
-                        </CardText>
-                    </Card>
-
+                    {(this.state.cards.map((card: any, index: number) => {
+                        return (
+                            <Card
+                                user={card.user}
+                                comments={card.comments}
+                                key={index}
+                            >
+                            <CardText>
+                                <Text>
+                                    {card.body}
+                                </Text>
+                            </CardText>
+                        </Card>
+                        )
+                    }))}
                 </ScrollView>
 
             </View>
@@ -34,4 +92,15 @@ class FeedPage extends Component<Props> {
     }
 }
 
-export default FeedPage;
+const mapDispatchToProps = {
+    getPosts: getPosts
+};
+
+const mapStateToProps = (state: any) => {
+    const feedState = state.feed;
+    return {
+        feedState
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeedPage);
