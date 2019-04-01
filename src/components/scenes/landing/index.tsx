@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import { container } from './styles';
+import styles from './styles';
 
 interface Props {
     navigation: any
@@ -8,16 +8,16 @@ interface Props {
 export default class LandingPage extends Component<Props> {
     render() {
         return (
-            <View style={container}>
+            <View style={styles.container}>
                <Text onPress={() => {
                    this.props.navigation.navigate('Profile')
                }}>
                    User Profile
                </Text>
                 <Text onPress={() => {
-                    this.props.navigation.navigate('Todos')
+                    this.props.navigation.navigate('Feed')
                 }}>
-                    Todos
+                    Feed
                 </Text>
             </View>
         );

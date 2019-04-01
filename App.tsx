@@ -12,13 +12,13 @@ import React, {Component} from 'react';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import ProfilePage from "./src/components/scenes/profile";
 import LandingPage from "./src/components/scenes/landing";
-import TodosPage from "./src/components/scenes/todos";
 import reducer from './src/reducers/';
 import {applyMiddleware, compose, createStore} from 'redux'
 import { Provider } from 'react-redux'
 import {composeWithDevTools, devToolsEnhancer} from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from './src/sagas';
+import FeedPage from "./src/components/scenes/feed";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -33,7 +33,7 @@ sagaMiddleware.run(rootSaga);
 const AppNavigator = createStackNavigator({
     Landing: LandingPage,
     Profile: ProfilePage,
-    Todos: TodosPage,
+    Feed: FeedPage,
 }, {
     initialRouteName: "Landing"
 });
