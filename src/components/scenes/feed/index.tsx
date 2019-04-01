@@ -9,11 +9,11 @@ export default class LandingPage extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-               <Text onPress={() => {
-                   this.props.navigation.navigate('Profile')
-               }}>
-                   User Profile
-               </Text>
+                <Text onPress={() => {
+                    this.props.navigation.navigate('Profile')
+                }}>
+                    User Profile
+                </Text>
                 <Text onPress={() => {
                     this.props.navigation.navigate('Todos')
                 }}>
