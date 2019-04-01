@@ -14,7 +14,6 @@ function* fetchUser(action: IUserAction) {
 
 }
 function* actionWatcher() {
-    yield takeLatest('GET_POSTS_SUCCESS', fetchAllUsers)
     yield takeLatest('GET_POSTS_INIT', fetchFeed);
     yield takeLatest('GET_USER', fetchUser)
 }
