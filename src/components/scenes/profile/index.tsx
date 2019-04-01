@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import {Button, Image, Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Animated, Button, Image, Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {IUser} from "../../../models/users";
 import {ITodo} from "../../../models/todo";
 import {getUser} from "../../../actions/user";
 import {connect} from "react-redux";
 import {IUserState} from "../../../reducers/profile";
 import styles from "./styles";
+import ProfileHeader from "../../shared/profileHeader";
+import AboutMe from "../../shared/aboutMe";
 
 interface Props {
     navigation: any,
@@ -47,24 +49,11 @@ class ProfilePage extends Component<Props, State> {
                 </View>
             ) :
             (
-                <ScrollView style={styles.container}>
-                    <View style={styles.header}>
-                        <View style={styles.profilePictureContainer}>
-                            <Image
-                                style={styles.picture}
-                                source={{ uri: 'https://pbs.twimg.com/profile_images/981164521594040323/ONbHPtjU_400x400.jpg' }}
-                                defaultSource={require('../../../assets/images/dp_placeholder.jpg')}
-                            />
-                        </View>
-                        <View style={styles.nameContainer}>
-                            <Text style={styles.name}>
-                                { user.name}
-                            </Text>
-                            <Text>
-                                { user.username }
-                            </Text>
-                        </View>
-                    </View>
+                <ScrollView
+                    style={styles.container}
+                >
+                    <ProfileHeader user={user}/>
+                    <AboutMe user={user}></AboutMe>
                 </ScrollView>
             );
     }
