@@ -1,5 +1,6 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
 import {IUserAction} from "../actions/user";
+import {fetchFeed} from "./feed";
 
 function* fetchUser(action: IUserAction) {
     try {
@@ -13,6 +14,8 @@ function* fetchUser(action: IUserAction) {
 
 }
 function* actionWatcher() {
+    yield takeLatest('GET_POSTS_SUCCESS', fetchAllUsers)
+    yield takeLatest('GET_POSTS_INIT', fetchFeed);
     yield takeLatest('GET_USER', fetchUser)
 }
 

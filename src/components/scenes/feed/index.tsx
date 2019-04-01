@@ -5,13 +5,22 @@ import Card from "../../shared/card";
 import CardText from "../../shared/cardText";
 import MockUser from '../../../../mocks/users';
 import MockComments from '../../../../mocks/comments';
+import {getPosts} from "../../../actions/feed";
+import {connect} from "react-redux";
 interface Props {
-    navigation: any
+    navigation: any,
+    getPosts: () => void,
 }
 const user = MockUser;
 const comments = [MockComments];
 
 class FeedPage extends Component<Props> {
+
+    componentDidMount(): void {
+        console.log('on mount call');
+        this.props.getPosts();
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -34,4 +43,13 @@ class FeedPage extends Component<Props> {
     }
 }
 
-export default FeedPage;
+const mapDispatchToProps = {
+    getPosts: getPosts
+};
+
+const mapStateToProps = (state: any) => {
+    console.log(state);
+    return state;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeedPage);
