@@ -1,6 +1,7 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
 import {convertPayloadToModel, IPost} from "../models/posts";
 import { convertPayloadToModel as convertPayloadToUserModel } from '../models/users';
+import {convertPayloadToModel as convertPayloadToCommentsModel, IComment} from '../models/comments';
 import {IFeedAction} from "../actions/feed";
 import _ from 'lodash';
 import {IUser} from "../models/users";
@@ -8,13 +9,14 @@ import {IUser} from "../models/users";
 export function* fetchFeed(action: IFeedAction) {
     try {
         let uniqueUsers: Array<number> = [];
+        console.log('getting posts');
         const posts: Array<IPost> = yield fetch(
             `https://jsonplaceholder.typicode.com/posts`
         )
         .then(response => response.json())
         .then(posts => {
             // Convert Post JSON data into our model
-            const convertedPosts: Array<IPost> = _.take(posts.map(convertPayloadToModel), 10)
+            const convertedPosts: Array<IPost> = _.take(posts.map(convertPayloadToModel), 10);
 
             // Create a list of unique user ids to fetch data for
             uniqueUsers = _.uniq(convertedPosts.map(p => p.userId));
@@ -22,13 +24,29 @@ export function* fetchFeed(action: IFeedAction) {
         });
 
         // Create an array of promises to fetch all user data
-        const promiseArray = uniqueUsers.map(userId => {
-            return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`).then(p => p.json());
+        const userPromiseArray = uniqueUsers.map(userId => {
+            return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+            .then(p => p.json());
         });
-        const users: Array<IUser> = yield Promise.all(promiseArray)
-            .then(payloads => payloads.map(convertPayloadToUserModel));
 
-        yield put({ type: 'GET_POSTS_SUCCESS', posts: posts, users: users });
+        const commentsPromiseArray = posts.map(post => {
+            return fetch(`https://jsonplaceholder.typicode.com/comments?postId=${post.id}`)
+            .then(p => p.json());
+        });
+
+        const users: Array<IUser> = yield Promise.all(userPromiseArray)
+        .then(payloads => payloads.map(convertPayloadToUserModel));
+
+        const comments: Array<IComment> = yield Promise.all(commentsPromiseArray)
+        .then(payloads => {
+            const allComments = payloads.reduce((acc, val) => {
+                val.map(convertPayloadToCommentsModel).forEach(c => acc.push(c));
+                return acc;
+            }, []);
+            return allComments;
+        });
+
+        yield put({ type: 'GET_POSTS_SUCCESS', posts: posts, users: users, comments: comments });
     } catch (e) {
         yield put({ type: 'GET_POSTS_ERROR'});
     }

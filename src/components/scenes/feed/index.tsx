@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 import styles from './styles';
-import Card from "../../shared/card";
-import CardText from "../../shared/cardText";
-import MockUser from '../../../../mocks/users';
+import Card from '../../shared/card';
+import CardText from '../../shared/cardText';
 import MockComments from '../../../../mocks/comments';
 import {getPosts} from "../../../actions/feed";
-import {connect} from "react-redux";
-import {IFeedState} from "../../../reducers/feed";
+import {connect} from 'react-redux';
+import {IFeedState} from '../../../reducers/feed';
 import _ from 'lodash';
-import {IComment} from "../../../models/comments";
-import {IUser} from "../../../models/users";
+import {IComment} from '../../../models/comments';
+import {IUser} from '../../../models/users';
 
 interface IProps {
     navigation: any,
@@ -27,7 +26,6 @@ interface IState {
     cards: Array<ICardInfo>
 }
 
-const user = MockUser;
 const comments = [MockComments];
 
 class FeedPage extends Component<IProps, IState> {
@@ -48,7 +46,7 @@ class FeedPage extends Component<IProps, IState> {
         } = this.props;
         const cards: Array<ICardInfo> = feedState.posts.map((post) => {
             return {
-                comments,
+                comments: feedState.comments[post.id],
                 user: feedState.users[post.userId],
                 body: post.body,
             }
@@ -75,10 +73,10 @@ class FeedPage extends Component<IProps, IState> {
                     {(this.state.cards.map((card: any, index: number) => {
                         return (
                             <Card
-                            user={card.user}
-                            comments={card.comments}
-                            key={index}
-                        >
+                                user={card.user}
+                                comments={card.comments}
+                                key={index}
+                            >
                             <CardText>
                                 <Text>
                                     {card.body}

@@ -1,5 +1,6 @@
 import {IPost} from "../models/posts";
 import {IUser} from "../models/users";
+import {IComment} from "../models/comments";
 
 export interface IFeedAction {
     type:
@@ -7,7 +8,8 @@ export interface IFeedAction {
         | 'GET_POSTS_SUCCESS'
         | 'GET_POSTS_ERROR'
     posts?: Array<IPost>,
-    users?: Array<IUser>
+    users?: Array<IUser>,
+    comments?: Array<IComment>,
 }
 
 export const getPosts = (): IFeedAction => {
