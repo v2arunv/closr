@@ -1,4 +1,4 @@
-import { put, takeLatest, all } from 'redux-saga/effects';
+import { put} from 'redux-saga/effects';
 import {convertPayloadToModel, IPost} from "../models/posts";
 import { convertPayloadToModel as convertPayloadToUserModel } from '../models/users';
 import {convertPayloadToModel as convertPayloadToCommentsModel, IComment} from '../models/comments';
@@ -9,7 +9,6 @@ import {IUser} from "../models/users";
 export function* fetchFeed(action: IFeedAction) {
     try {
         let uniqueUsers: Array<number> = [];
-        console.log('getting posts');
         const posts: Array<IPost> = yield fetch(
             `https://jsonplaceholder.typicode.com/posts`
         )
@@ -40,7 +39,7 @@ export function* fetchFeed(action: IFeedAction) {
         const comments: Array<IComment> = yield Promise.all(commentsPromiseArray)
         .then(payloads => {
             const allComments = payloads.reduce((acc, val) => {
-                val.map(convertPayloadToCommentsModel).forEach(c => acc.push(c));
+                val.map(convertPayloadToCommentsModel).forEach((c: IComment) => acc.push(c));
                 return acc;
             }, []);
             return allComments;
