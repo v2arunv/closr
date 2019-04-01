@@ -7,7 +7,7 @@ import posts from "../../mocks/posts";
 export interface IFeedState {
     isLoading: boolean,
     isError: boolean,
-    posts: Array<IPost> | null,
+    posts: Array<IPost>,
     users: any,
 }
 
@@ -18,12 +18,14 @@ const initialState = {
     users: {},
 };
 
-const convertUserArrayPayloadIntoLookupMap = (users: Array<IUser> = []) => {
+const convertUserArrayPayloadIntoLookupMap = (users: Array<IUser> = [], initialState: any) => {
+    // Create a map of { userId: userDetails } to avoid iterating through
+    // an array to lookup user info
     return _.reduce(users, (acc: any, val: IUser) => {
         return {
             [val.id]: val,
         };
-    }, {})
+    }, initialState)
 };
 
 const feed = (state = initialState, action: IFeedAction): IFeedState => {
@@ -40,7 +42,7 @@ const feed = (state = initialState, action: IFeedAction): IFeedState => {
                 ...state,
                 isLoading: false,
                 posts: action.posts || [],
-                users: convertUserArrayPayloadIntoLookupMap(action.users),
+                users: convertUserArrayPayloadIntoLookupMap(action.users, state.users),
             };
         case 'GET_POSTS_ERROR':
             return {
