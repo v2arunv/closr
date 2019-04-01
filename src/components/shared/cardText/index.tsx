@@ -1,9 +1,12 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {Text, View} from 'react-native';
 import styles from "./styles";
 
+export interface ICardTextProps {
+    children: React.ReactElement<Text> [] | React.ReactElement<Text>
+}
 
-const CardText = (props: any) => {
+const CardText = (props: ICardTextProps) => {
     return (
         <View style={styles.container}>
             <Text>

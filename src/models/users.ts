@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export interface IAddress {
     street?: string,
     suite?: string,
@@ -20,8 +22,33 @@ export interface IUser {
     name: string,
     username: string,
     email: string,
+    profilePictureURL?: string,
     phone?: string,
     website?: string,
     address?: IAddress,
     company?: ICompany,
 }
+
+export const convertPayloadToModel = (payload: any): IUser => {
+    const company: ICompany = _.get(payload, 'company', null);
+    const address: IAddress = _.get(payload, 'address', null);
+    const {
+        id,
+        name,
+        username,
+        email,
+        phone,
+        website
+    } = payload;
+    return {
+        id,
+        name,
+        username,
+        email,
+        phone,
+        website,
+        company,
+        address,
+        profilePictureURL: 'https://semantic-ui.com/images/avatar2/large/lindsay.png',
+    };
+};

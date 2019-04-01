@@ -8,7 +8,7 @@ import styles from "./styles";
 
 interface IHeaderProfileProps {
     name: string,
-    dpURL: string,
+    dpURL: string | undefined,
 }
 
 
@@ -23,7 +23,7 @@ const CardHeader = (props: IHeaderProfileProps) => {
             >
                 <Image
                     style={styles.picture}
-                    source={{ uri: props.dpURL}}
+                    source={{ uri: props.dpURL }}
                     defaultSource={require('../../../assets/images/dp_placeholder.jpg')}
                 />
             </View>

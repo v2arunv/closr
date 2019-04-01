@@ -3,21 +3,40 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import styles from "./styles";
 import CardHeader from "../cardHeader";
 import CardComment from "../cardComment";
+import {ICardTextProps} from '../cardText'
+import {IUser} from "../../../models/users";
+import {IComment} from "../../../models/comments";
+import _ from 'lodash';
 
-const Card = (props: any) => {
+interface ICardProps {
+    children: React.ReactElement<ICardTextProps>
+    user: IUser,
+    comments: Array<IComment>,
+}
+
+
+const Card = (props: ICardProps) => {
+    const {
+        user,
+        children,
+    } = props;
+    const comments: Array<IComment> = _.get(props, 'comments', []);
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <CardHeader
-                    name={'Varun Vasudevan'}
-                    dpURL={'https://www.eharmony.co.uk/dating-advice/wp-content/uploads/2011/04/profilephotos-960x640.jpg'}
+                    name={user.name || ''}
+                    dpURL={user.profilePictureURL}
                 />
             </View>
             <View style={styles.content}>
-                {props.children}
+                {children}
             </View>
             <View style={styles.comments}>
-                <CardComment/>
+                {
+                    comments.map(c =>
+                        <CardComment username={c.name} commentText={c.body} key={c.id}/>
+                )}
             </View>
         </View>
     )
