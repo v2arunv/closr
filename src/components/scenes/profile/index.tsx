@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Platform, StyleSheet, Text, View} from 'react-native';
+import {Button, Image, Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {IUser} from "../../../models/users";
 import {ITodo} from "../../../models/todo";
 import {getUser} from "../../../actions/user";
@@ -9,29 +9,64 @@ import styles from "./styles";
 
 interface Props {
     navigation: any,
-    getUser: any,
-    userId: number
+    getUser: (userId: any) => void,
+    userId: number,
+    loading: boolean,
+    error: boolean,
+    user: IUser
 }
-class ProfilePage extends Component<Props> {
+interface State {
+    userId: number | null,
+}
+
+class ProfilePage extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
+        this.state = {
+            userId: null,
+        }
     }
 
     componentDidMount(): void {
-        console.log(this.props.navigation.getParam('userId', null));
+        this.setState({
+            ...this.state,
+            userId: this.props.navigation.getParam('userId', null),
+        }, () => {
+            this.props.getUser(this.state.userId);
+        });
     }
 
     render() {
-        return (
-            <View style={styles.container}>
-                <Text>
-                    Here's your best friend in the world
-                </Text>
-                <Button title={'FETCH'} onPress={() => {
-                    this.props.getUser('10')
-                }}/>
-            </View>
-        );
+        const {
+            user,
+        } = this.props;
+        return this.props.loading ?
+            (
+                <View>
+                    <Text>Loading</Text>
+                </View>
+            ) :
+            (
+                <ScrollView style={styles.container}>
+                    <View style={styles.header}>
+                        <View style={styles.profilePictureContainer}>
+                            <Image
+                                style={styles.picture}
+                                source={{ uri: 'https://pbs.twimg.com/profile_images/981164521594040323/ONbHPtjU_400x400.jpg' }}
+                                defaultSource={require('../../../assets/images/dp_placeholder.jpg')}
+                            />
+                        </View>
+                        <View style={styles.nameContainer}>
+                            <Text style={styles.name}>
+                                { user.name}
+                            </Text>
+                            <Text>
+                                { user.username }
+                            </Text>
+                        </View>
+                    </View>
+                </ScrollView>
+            );
     }
 }
 

@@ -9,7 +9,7 @@ import styles from "./styles";
 interface IHeaderProfileProps {
     name: string,
     dpURL: string | undefined,
-    onClick: () => void
+    onClick: () => void,
 }
 
 

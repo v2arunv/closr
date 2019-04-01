@@ -8,7 +8,7 @@ export interface IUserState {
 }
 
 const initialState: IUserState = {
-    loading: false,
+    loading: true,
     error: false,
     user: null,
 };

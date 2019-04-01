@@ -57,10 +57,12 @@ class FeedPage extends Component<IProps, IState> {
         });
     }
 
-    navigateToProfile = (userId: number) => {
-        this.props.navigation.navigate('Profile', {
-            userId,
-        });
+    navigateToProfileGenerator = (userId: number) => {
+        return (): void => {
+            this.props.navigation.navigate('Profile', {
+                userId,
+            });
+        }
     };
 
     componentDidUpdate(prevProps: Readonly<IProps>, prevState: Readonly<{}>, snapshot?: any): void {
@@ -82,7 +84,7 @@ class FeedPage extends Component<IProps, IState> {
                                 user={card.user}
                                 comments={card.comments}
                                 key={index}
-                                onProfileClick={this.navigateToProfile}
+                                onProfileClick={this.navigateToProfileGenerator(card.user.id)}
                             >
                             <CardText>
                                 <Text>
