@@ -1,27 +1,31 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import styles from './styles';
+import LottieView from "lottie-react-native";
 
 interface Props {
     navigation: any
 }
 export default class LandingPage extends Component<Props> {
+    gotoFeed = () => {
+        this.props.navigation.navigate('Feed')
+    };
+
     render() {
-        return (
+        return(
             <View style={styles.container}>
-               <Text onPress={() => {
-                   this.props.navigation.navigate('Profile', {
-                       userId: 1,
-                   })
-               }}>
-                   User Profile
-               </Text>
-                <Text onPress={() => {
-                    this.props.navigation.navigate('Feed')
-                }}>
-                    Feed
+                <View style={styles.animationContainer}>
+                    <LottieView
+                        source={require('../../../assets/lottie/welcome.json')}
+                        autoPlay
+                        loop={false}
+                        onAnimationFinish={this.gotoFeed}
+                    />
+                </View>
+                <Text style={styles.appName}>
+                    closr
                 </Text>
             </View>
-        );
+        )
     }
 }
