@@ -1,19 +1,21 @@
 import React, {Component} from 'react';
-import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import styles from './styles';
 import Card from '../../shared/card';
 import CardText from '../../shared/cardText';
 import MockComments from '../../../../mocks/comments';
-import {getPosts} from "../../../actions/feed";
+import {getPosts, resetState} from "../../../actions/feed";
 import {connect} from 'react-redux';
 import {IFeedState} from '../../../reducers/feed';
 import _ from 'lodash';
 import {IComment} from '../../../models/comments';
 import {IUser} from '../../../models/users';
+import Loader from "../../shared/loader";
 
 interface IProps {
     navigation: any,
     getPosts: () => void,
+    resetState: () => void,
     feedState: IFeedState,
 }
 interface ICardInfo {
@@ -36,8 +38,23 @@ class FeedPage extends Component<IProps, IState> {
         }
     }
 
+    static navigationOptions = {
+        title: 'Feed',
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+    };
+
     componentDidMount(): void {
         this.props.getPosts();
+    }
+
+    componentWillUnmount(): void {
+        this.props.resetState();
     }
 
     prepareFeed() {
@@ -74,35 +91,41 @@ class FeedPage extends Component<IProps, IState> {
         }
     }
 
-    render() {
+    renderSuccess() {
         return (
             <View style={styles.container}>
-                <ScrollView>
-                    {(this.state.cards.map((card: any, index: number) => {
-                        return (
-                            <Card
-                                user={card.user}
-                                comments={card.comments}
-                                key={index}
-                                onProfileClick={this.navigateToProfileGenerator(card.user.id)}
-                            >
+            <ScrollView>
+                {(this.state.cards.map((card: any, index: number) => {
+                    return (
+                        <Card
+                            user={card.user}
+                            comments={card.comments}
+                            key={index}
+                            onProfileClick={this.navigateToProfileGenerator(card.user.id)}
+                        >
                             <CardText>
                                 <Text>
                                     {card.body}
                                 </Text>
                             </CardText>
                         </Card>
-                        )
-                    }))}
-                </ScrollView>
+                    )
+                }))}
+            </ScrollView>
+        </View>
+        );
+    }
 
-            </View>
+    render() {
+        return (
+            this.props.feedState.isLoading == true ? <Loader/> : this.renderSuccess()
         );
     }
 }
 
 const mapDispatchToProps = {
-    getPosts: getPosts
+    getPosts: getPosts,
+    resetState: resetState,
 };
 
 const mapStateToProps = (state: any) => {

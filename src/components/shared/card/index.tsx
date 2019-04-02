@@ -36,8 +36,8 @@ const Card = (props: ICardProps) => {
             </View>
             <View style={styles.comments}>
                 {
-                    comments.map(c =>
-                        <CardComment username={c.name} commentText={c.body} key={c.id}/>
+                    comments.map((c, index) =>
+                        <CardComment username={c.name} commentText={c.body} key={`${c.postId}-${c.id}`}/>
                 )}
             </View>
         </View>

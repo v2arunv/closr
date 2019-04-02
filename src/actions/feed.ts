@@ -7,6 +7,7 @@ export interface IFeedAction {
         'GET_POSTS_INIT'
         | 'GET_POSTS_SUCCESS'
         | 'GET_POSTS_ERROR'
+        | 'RESET_FEED_STATE'
     posts?: Array<IPost>,
     users?: Array<IUser>,
     comments?: Array<IComment>,
@@ -17,3 +18,9 @@ export const getPosts = (): IFeedAction => {
         type: "GET_POSTS_INIT",
     }
 };
+
+export const resetState = (): IFeedAction => {
+    return {
+        type: 'RESET_FEED_STATE'
+    }
+}

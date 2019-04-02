@@ -17,7 +17,7 @@ const initialState = {
     isError: false,
     posts: [],
     users: {},
-    comments: {},
+    comments: [],
 };
 
 const convertUserArrayPayloadIntoLookupMap = (users: Array<IUser> = [], initialState: any) => {
@@ -32,6 +32,7 @@ const convertUserArrayPayloadIntoLookupMap = (users: Array<IUser> = [], initialS
 };
 
 const convertCommentsArrayPayloadIntoLookupMap = (comments: Array<IComment> = [], initialState: any) => {
+    const copy = Object.assign({}, initialState);
     return _.reduce(comments, (acc: any, val: IComment) => {
         if (acc[val.postId] == null) {
             acc[val.postId] = [val]
@@ -39,8 +40,9 @@ const convertCommentsArrayPayloadIntoLookupMap = (comments: Array<IComment> = []
             acc[val.postId].push(val);
         }
         return acc;
-    }, initialState)
-}
+    }, copy)
+};
+
 const feed = (state = initialState, action: IFeedAction): IFeedState => {
     switch (action.type) {
         case 'GET_POSTS_INIT':
@@ -63,6 +65,9 @@ const feed = (state = initialState, action: IFeedAction): IFeedState => {
                 isError: true,
                 posts: [],
             };
+        case 'RESET_FEED_STATE': {
+            return initialState;
+        }
         default:
             return state
     }

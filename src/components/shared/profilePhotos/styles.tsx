@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
     rowText: {
         marginLeft: 10,
     },
+    loaderContainer: {
+      height: 100,
+    },
     lastRow: {
         marginBottom: 10,
     },

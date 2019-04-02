@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Animated, Button, Image, Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Animated, Button, EventSubscription, Image, Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {IUser} from "../../../models/users";
 import {ITodo} from "../../../models/todo";
-import {getUser} from "../../../actions/user";
+import {getUser, resetState} from "../../../actions/user";
 import {connect} from "react-redux";
 import {IUserState} from "../../../reducers/profile";
 import styles from "./styles";
@@ -10,11 +10,13 @@ import ProfileHeader from "../../shared/profileHeader";
 import AboutMe from "../../shared/aboutMe";
 import ProfilePhotos from "../../shared/profilePhotos";
 import {IPhoto} from "../../../models/photos";
-
+import LottieView from 'lottie-react-native';
+import Loader from "../../shared/loader";
 
 interface Props {
     navigation: any,
     getUser: (userId: any) => void,
+    resetState: () => void,
     userId: number,
     loading: boolean,
     error: boolean,
@@ -25,12 +27,24 @@ interface State {
 }
 
 class ProfilePage extends Component<Props, State> {
+
     constructor(props: Props) {
         super(props);
         this.state = {
             userId: null,
         }
     }
+
+    static navigationOptions = {
+        title: 'Profile',
+        headerStyle: {
+            backgroundColor: '#2cb4f4',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+    };
 
     componentDidMount(): void {
         this.setState({
@@ -39,6 +53,10 @@ class ProfilePage extends Component<Props, State> {
         }, () => {
             this.props.getUser(this.state.userId);
         });
+    }
+
+    componentWillUnmount(): void {
+        this.props.resetState();
     }
 
     gotoPhotoModal = (photo: IPhoto) => {
@@ -55,9 +73,7 @@ class ProfilePage extends Component<Props, State> {
         } = this.props;
         return this.props.loading ?
             (
-                <View>
-                    <Text>Loading</Text>
-                </View>
+                <Loader/>
             ) :
             (
                 <ScrollView
@@ -86,7 +102,8 @@ const mapStateToProps = (state: any) => {
 };
 
 const mapDispatchToProps = {
-    getUser: getUser
+    getUser: getUser,
+    resetState: resetState,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

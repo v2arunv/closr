@@ -33,6 +33,8 @@ const profile = (state:IUserState = initialState, action: IUserAction): IUserSta
                 error: true,
                 user: null,
             }
+        case 'RESET_USER_STATE':
+            return initialState;
         default:
             return state
     }
