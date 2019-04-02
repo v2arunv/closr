@@ -4,9 +4,10 @@ import styles from "./styles";
 import {IPhoto} from '@models/photos';
 import _ from 'lodash';
 import Loader from "../loader";
+import {NavigationScreenProp} from "react-navigation";
 
 interface Props {
-    navigation: any,
+    navigation: NavigationScreenProp<any>,
 }
 
 interface State {

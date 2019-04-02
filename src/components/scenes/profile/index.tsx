@@ -16,7 +16,7 @@ import common from '@common/styles';
 
 
 interface Props {
-    navigation: any,
+    navigation: NavigationScreenProp<any>,
     getUser: (userId: any) => void,
     resetState: () => void,
     userId: number,
@@ -50,7 +50,6 @@ class ProfilePage extends Component<Props, State> {
 
     componentDidMount(): void {
         this.setState({
-            ...this.state,
             userId: this.props.navigation.getParam('userId', null),
         }, () => {
             this.props.getUser(this.state.userId);

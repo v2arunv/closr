@@ -22,6 +22,12 @@ This application uses the following frameworks/tools:
 * [Lodash](https://lodash.com/)
 * [React Native Lottie](https://github.com/react-native-community/lottie-react-native)
 
+## Product Development
+
+You can refer to this [GitHub project board](https://github.com/v2arunv/closr/projects/2) to refer to which features were chosen to develop, in what order and what features were archived/dropped.
+
+The board is also helps in outlining the direction that could have been taken in developing new features
+
 ## Running on Android
 
 Depending on how your local environment is setup, you might need to modify the Dev Server settings as mentioned [here](https://stackoverflow.com/questions/42064283/react-nativecould-not-connect-to-development-server-on-android)

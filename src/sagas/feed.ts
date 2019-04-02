@@ -4,6 +4,7 @@ import { convertPayloadToModel as convertPayloadToUserModel } from '@models/user
 import {convertPayloadToModel as convertPayloadToCommentsModel, IComment} from '@models/comments';
 import {IFeedAction} from '@actions/feed';
 import {IUser} from '@models/users';
+import config from '@common/config'
 import _ from 'lodash';
 
 export function* fetchFeed(action: IFeedAction) {
@@ -15,7 +16,7 @@ export function* fetchFeed(action: IFeedAction) {
         .then(response => response.json())
         .then(posts => {
             // Convert Post JSON data into our model
-            const convertedPosts: Array<IPost> = _.take(posts.map(convertPayloadToModel), 10);
+            const convertedPosts: Array<IPost> = _.take(posts.map(convertPayloadToModel), config.feedPostSize);
 
             // Create a list of unique user ids to fetch data for
             uniqueUsers = _.uniq(convertedPosts.map(p => p.userId));

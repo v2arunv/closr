@@ -3,18 +3,19 @@ import {ScrollView, Text, View} from 'react-native';
 import styles from './styles';
 import Card from '@sharedComponents/card';
 import CardText from '@sharedComponents/cardText';
-import MockComments from '@mocks/comments';
 import {getPosts, resetState} from "@actions/feed";
 import {connect} from 'react-redux';
 import {IFeedState} from '@reducers/feed';
-import _ from 'lodash';
 import {IComment} from '@models/comments';
 import {IUser} from '@models/users';
 import Loader from "@sharedComponents/loader";
 import common from '@common/styles';
+import _ from 'lodash';
+import {NavigationScreenProp} from "react-navigation";
+
 
 interface IProps {
-    navigation: any,
+    navigation: NavigationScreenProp<any>,
     getPosts: () => void,
     resetState: () => void,
     feedState: IFeedState,
@@ -28,8 +29,6 @@ interface ICardInfo {
 interface IState {
     cards: Array<ICardInfo>
 }
-
-const comments = [MockComments];
 
 class FeedPage extends Component<IProps, IState> {
     constructor(props: IProps) {
@@ -70,7 +69,6 @@ class FeedPage extends Component<IProps, IState> {
             }
         });
         this.setState({
-            ...this.state,
             cards,
         });
     }

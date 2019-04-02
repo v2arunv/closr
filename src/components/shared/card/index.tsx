@@ -7,6 +7,7 @@ import {ICardTextProps} from '@sharedComponents/cardText'
 import {IUser} from "@models/users";
 import {IComment} from "@models/comments";
 import _ from 'lodash';
+import common from '@common/styles';
 
 interface ICardProps {
     children: React.ReactElement<ICardTextProps>
@@ -23,7 +24,7 @@ const Card = (props: ICardProps) => {
     } = props;
     const comments: Array<IComment> = _.get(props, 'comments', []);
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, common.cardShadow ]}>
             <View style={styles.header}>
                 <CardHeader
                     name={user.name || ''}
