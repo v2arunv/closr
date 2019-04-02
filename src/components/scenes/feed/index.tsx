@@ -4,7 +4,7 @@ import styles from './styles';
 import Card from '../../shared/card';
 import CardText from '../../shared/cardText';
 import MockComments from '../../../../mocks/comments';
-import {getPosts} from "../../../actions/feed";
+import {getPosts, resetState} from "../../../actions/feed";
 import {connect} from 'react-redux';
 import {IFeedState} from '../../../reducers/feed';
 import _ from 'lodash';
@@ -15,6 +15,7 @@ import Loader from "../../shared/loader";
 interface IProps {
     navigation: any,
     getPosts: () => void,
+    resetState: () => void,
     feedState: IFeedState,
 }
 interface ICardInfo {
@@ -50,6 +51,10 @@ class FeedPage extends Component<IProps, IState> {
 
     componentDidMount(): void {
         this.props.getPosts();
+    }
+
+    componentWillUnmount(): void {
+        this.props.resetState();
     }
 
     prepareFeed() {
@@ -119,7 +124,8 @@ class FeedPage extends Component<IProps, IState> {
 }
 
 const mapDispatchToProps = {
-    getPosts: getPosts
+    getPosts: getPosts,
+    resetState: resetState,
 };
 
 const mapStateToProps = (state: any) => {

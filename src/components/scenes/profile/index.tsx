@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Animated, Button, Image, Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Animated, Button, EventSubscription, Image, Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {IUser} from "../../../models/users";
 import {ITodo} from "../../../models/todo";
 import {getUser, resetState} from "../../../actions/user";
@@ -27,6 +27,7 @@ interface State {
 }
 
 class ProfilePage extends Component<Props, State> {
+
     constructor(props: Props) {
         super(props);
         this.state = {
