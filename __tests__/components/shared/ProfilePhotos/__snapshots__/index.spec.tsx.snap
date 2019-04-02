@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#ffffff",
+        "flex": 1,
+        "marginTop": 10,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+      },
+      Object {
+        "borderBottomColor": "#ddd",
+        "borderBottomWidth": 0,
+        "elevation": 1,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.2,
+        "shadowRadius": 2,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 24,
+        "fontWeight": "bold",
+        "marginTop": 5,
+      }
+    }
+  >
+    Photos
+  </Text>
+  <View
+    style={
+      Object {
+        "marginTop": 10,
+      }
+    }
+  >
+    <View
+      style={Object {}}
+    >
+      <Text>
+        Mock Album 1
+      </Text>
+      <RCTScrollView
+        horizontal={true}
+        style={
+          Object {
+            "height": 70,
+          }
+        }
+      >
+        <View>
+          <View
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "height": 60,
+                "margin": 5,
+                "opacity": 1,
+                "width": 60,
+              }
+            }
+          >
+            <Image
+              defaultSource={
+                Object {
+                  "testUri": "../../../src/assets/images/beach-parasol-water-1.png",
+                }
+              }
+              source={
+                Object {
+                  "uri": "https://via.placeholder.com/150/92c952",
+                }
+              }
+              style={
+                Object {
+                  "height": 60,
+                  "width": 60,
+                }
+              }
+            />
+          </View>
+          <View
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "height": 60,
+                "margin": 5,
+                "opacity": 1,
+                "width": 60,
+              }
+            }
+          >
+            <Image
+              defaultSource={
+                Object {
+                  "testUri": "../../../src/assets/images/beach-parasol-water-1.png",
+                }
+              }
+              source={
+                Object {
+                  "uri": "https://via.placeholder.com/150/771796",
+                }
+              }
+              style={
+                Object {
+                  "height": 60,
+                  "width": 60,
+                }
+              }
+            />
+          </View>
+        </View>
+      </RCTScrollView>
+    </View>
+  </View>
+</View>
+`;

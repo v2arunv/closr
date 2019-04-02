@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "row",
+      "padding": 10,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "height": 30,
+        "width": 30,
+      }
+    }
+  >
+    <Image
+      defaultSource={
+        Object {
+          "testUri": "../../../src/assets/images/dp_placeholder.jpg",
+        }
+      }
+      source={
+        Object {
+          "uri": undefined,
+        }
+      }
+      style={
+        Object {
+          "borderRadius": 12.5,
+          "height": 25,
+          "padding": 5,
+          "width": 25,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#c1d0ff",
+        "borderRadius": 10,
+        "marginLeft": 5,
+        "padding": 5,
+        "width": "70%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      user
+    </Text>
+    <Text
+      style={
+        Object {
+          "marginTop": 5,
+        }
+      }
+    >
+      comment
+    </Text>
+  </View>
+</View>
+`;
