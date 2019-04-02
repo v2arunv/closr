@@ -11,6 +11,7 @@ import _ from 'lodash';
 import {IComment} from '../../../models/comments';
 import {IUser} from '../../../models/users';
 import Loader from "../../shared/loader";
+import common from '../../../common/styles';
 
 interface IProps {
     navigation: any,
@@ -41,7 +42,7 @@ class FeedPage extends Component<IProps, IState> {
     static navigationOptions = {
         title: 'Feed',
         headerStyle: {
-            backgroundColor: '#f4511e',
+            backgroundColor: common.primaryColor,
         },
         headerTintColor: '#fff',
         headerTitleStyle: {

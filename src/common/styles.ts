@@ -7,6 +7,8 @@ export default {
     fullWidth: screenWidth,
     fullHeight: screenHeight,
     borderColor: '#dfdfdf',
+    primaryColor: '#0892a5',
+    secondaryColor: '#26C485',
     cardShadow: {
         borderBottomColor: '#ddd',
         borderBottomWidth: 0,
