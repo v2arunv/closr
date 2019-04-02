@@ -12,3 +12,9 @@ export const getUser = (id: string): IUserAction => {
         id,
     }
 };
+
+export const resetState = (): IUserAction => {
+    return <IUserAction> {
+        type: 'RESET_STATE'
+    }
+}

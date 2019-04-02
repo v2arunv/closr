@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Animated, Button, Image, Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {IUser} from "../../../models/users";
 import {ITodo} from "../../../models/todo";
-import {getUser} from "../../../actions/user";
+import {getUser, resetState} from "../../../actions/user";
 import {connect} from "react-redux";
 import {IUserState} from "../../../reducers/profile";
 import styles from "./styles";
@@ -10,11 +10,12 @@ import ProfileHeader from "../../shared/profileHeader";
 import AboutMe from "../../shared/aboutMe";
 import ProfilePhotos from "../../shared/profilePhotos";
 import {IPhoto} from "../../../models/photos";
-
+import LottieView from 'lottie-react-native';
 
 interface Props {
     navigation: any,
     getUser: (userId: any) => void,
+    resetState: () => void,
     userId: number,
     loading: boolean,
     error: boolean,
@@ -41,6 +42,10 @@ class ProfilePage extends Component<Props, State> {
         });
     }
 
+    componentWillUnmount(): void {
+        this.props.resetState();
+    }
+
     gotoPhotoModal = (photo: IPhoto) => {
         return () => {
             this.props.navigation.navigate('PhotoViewer', {
@@ -55,8 +60,8 @@ class ProfilePage extends Component<Props, State> {
         } = this.props;
         return this.props.loading ?
             (
-                <View>
-                    <Text>Loading</Text>
+                <View style={{ width: '100%', height: '100%', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <LottieView source={require('../../../assets/lottie/loader.json')} autoPlay loop />
                 </View>
             ) :
             (
@@ -86,7 +91,8 @@ const mapStateToProps = (state: any) => {
 };
 
 const mapDispatchToProps = {
-    getUser: getUser
+    getUser: getUser,
+    resetState: resetState,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
