@@ -8,6 +8,8 @@ import {IUserState} from "../../../reducers/profile";
 import styles from "./styles";
 import ProfileHeader from "../../shared/profileHeader";
 import AboutMe from "../../shared/aboutMe";
+import ProfilePhotos from "../../shared/profilePhotos";
+
 
 interface Props {
     navigation: any,
@@ -53,7 +55,9 @@ class ProfilePage extends Component<Props, State> {
                     style={styles.container}
                 >
                     <ProfileHeader user={user}/>
-                    <AboutMe user={user}></AboutMe>
+                    <AboutMe user={user}/>
+                    <ProfilePhotos user={user}/>
+                    <View style={styles.gap}/>
                 </ScrollView>
             );
     }

@@ -15,8 +15,26 @@ const styles = StyleSheet.create({
     },
     lastRow: {
         marginBottom: 10,
+    },
+    albumHeader: {
+    },
+    imageContainer: {
+        margin: 5,
+        width: 30,
+        height: 30,
+    },
+    thumbnail: {
+        width: 25,
+        height: 25,
+    },
+    albumSectionHeader: {
+        marginTop: 5,
+        fontWeight: 'bold',
+        fontSize: 24,
+    },
+    allAlbumContainer: {
+        marginTop: 10,
     }
-
 });
 
 export default styles

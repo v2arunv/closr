@@ -10,6 +10,7 @@ export interface IUserPhotosAction {
 }
 
 export const getUserPhotos = (id: number): IUserPhotosAction => {
+    console.log('getuserphotos called');
     return {
         type: "GET_PHOTOS_INIT",
         userId: id,

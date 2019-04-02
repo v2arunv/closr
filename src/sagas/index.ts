@@ -6,7 +6,7 @@ import {fetchPhotosForUsers} from "./userPhotos";
 function* actionWatcher() {
     yield takeLatest('GET_POSTS_INIT', fetchFeed);
     yield takeLatest('GET_USER', fetchUser);
-    yield takeLatest('GET_USER_PHOTOS', fetchPhotosForUsers);
+    yield takeLatest('GET_PHOTOS_INIT', fetchPhotosForUsers);
 }
 
 export default function* rootSaga() {
