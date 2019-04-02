@@ -37,6 +37,17 @@ class FeedPage extends Component<IProps, IState> {
         }
     }
 
+    static navigationOptions = {
+        title: 'Feed',
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+    };
+
     componentDidMount(): void {
         this.props.getPosts();
     }

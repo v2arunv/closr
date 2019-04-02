@@ -34,6 +34,17 @@ class ProfilePage extends Component<Props, State> {
         }
     }
 
+    static navigationOptions = {
+        title: 'Profile',
+        headerStyle: {
+            backgroundColor: '#2cb4f4',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+    };
+
     componentDidMount(): void {
         this.setState({
             ...this.state,
