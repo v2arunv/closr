@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#ffffff",
+        "flex": 1,
+        "marginTop": 10,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+      },
+      Object {
+        "borderBottomColor": "#ddd",
+        "borderBottomWidth": 0,
+        "elevation": 1,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.2,
+        "shadowRadius": 2,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "marginTop": 10,
+        "opacity": 1,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/images/phone-actions-ring.png",
+        }
+      }
+      style={
+        Object {
+          "height": 20,
+          "width": 20,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "marginLeft": 10,
+        }
+      }
+    >
+      1-770-736-8031 x56442
+    </Text>
+  </View>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "marginBottom": 10,
+        "marginTop": 10,
+        "opacity": 1,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/images/send-email-2.png",
+        }
+      }
+      style={
+        Object {
+          "height": 20,
+          "width": 20,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "marginLeft": 10,
+        }
+      }
+    >
+      Sincere@april.biz
+    </Text>
+  </View>
+</View>
+`;

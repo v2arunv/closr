@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "flex-start",
+        "backgroundColor": "#ffffff",
+        "flexDirection": "column",
+        "justifyContent": "flex-start",
+        "padding": 10,
+      },
+      Object {
+        "borderBottomColor": "#ddd",
+        "borderBottomWidth": 0,
+        "elevation": 1,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.2,
+        "shadowRadius": 2,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "marginBottom": 10,
+      }
+    }
+  >
+    <Image
+      defaultSource={
+        Object {
+          "testUri": "../../../src/assets/images/dp_placeholder.jpg",
+        }
+      }
+      source={
+        Object {
+          "uri": "http://www.sclance.com/pngs/image-placeholder-png/image_placeholder_png_698152.png",
+        }
+      }
+      style={
+        Object {
+          "borderRadius": 50,
+          "height": 100,
+          "width": 100,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 32,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Leanne Graham
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#505050",
+          "fontWeight": "300",
+        }
+      }
+    >
+      @
+      Bret
+    </Text>
+  </View>
+</View>
+`;

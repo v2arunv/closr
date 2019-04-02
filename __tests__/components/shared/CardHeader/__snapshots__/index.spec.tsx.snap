@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "borderBottomColor": "#dfdfdf",
+      "borderBottomWidth": 0.5,
+      "flex": 1,
+      "flexDirection": "row",
+      "minWidth": 100,
+      "paddingBottom": 10,
+      "paddingLeft": 10,
+      "paddingTop": 10,
+    }
+  }
+>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "borderRadius": 10,
+        "opacity": 1,
+      }
+    }
+  >
+    <Image
+      defaultSource={
+        Object {
+          "testUri": "../../../src/assets/images/dp_placeholder.jpg",
+        }
+      }
+      source={
+        Object {
+          "uri": "http://supposedToBeALinkToAPicture.com/somepicture.jpeg",
+        }
+      }
+      style={
+        Object {
+          "borderRadius": 25,
+          "height": 50,
+          "width": 50,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "marginLeft": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Full Name
+    </Text>
+  </View>
+</View>
+`;

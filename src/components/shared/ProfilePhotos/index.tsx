@@ -112,3 +112,6 @@ const mapStateToProps = (state: any) => {
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(ProfilePhotos);
+export {
+    ProfilePhotos,
+}
