@@ -1,5 +1,5 @@
-import {IUser} from "../models/users";
-import {IUserAction} from "../actions/user";
+import {IUser} from "@models/users";
+import {IUserAction} from "@actions/user";
 
 export interface IUserState {
     loading: boolean,

@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "airbnb",
+    "import/errors",
+    "import/warnings",
+    "import/typescript"
+  ],
+  "rules": {
+    "comma-dangle": 0,
+    "import/named": 2,
+    "import/namespace": 2,
+    "import/default": 2,
+    "import/export": 2
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  },
+  "plugins": [
+    "module-resolver",
+    "import"
+  ]
+}

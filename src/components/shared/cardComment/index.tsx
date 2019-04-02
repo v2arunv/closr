@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Image, Platform, StyleSheet, Text, View} from 'react-native';
 import styles from "./styles";
-import {IUser} from "../../../models/users";
+import {IUser} from "@models/users";
 
 interface ICardComment {
     username: string,

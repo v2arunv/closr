@@ -1,9 +1,8 @@
 import {Image, Linking, Text, TouchableOpacity, View} from "react-native";
 import React from "react";
-import {IUser} from "../../../models/users";
+import {IUser} from "@models/users";
 import styles from "./styles";
-import common from '../../../common/styles';
-import Section from "../section";
+import Section from "@sharedComponents/section";
 
 
 interface IProps {
@@ -23,7 +22,7 @@ const openEmail = (email:string) => {
     }
 };
 
-const openPhone = (phone:string) => {
+const openPhone = (phone:string = '*') => {
     return () => {
         Linking.canOpenURL(`tel:${phone}`)
             .then((supported) => {

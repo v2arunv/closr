@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import styles from "./styles";
-import CardHeader from "../cardHeader";
-import CardComment from "../cardComment";
-import {ICardTextProps} from '../cardText'
-import {IUser} from "../../../models/users";
-import {IComment} from "../../../models/comments";
+import CardHeader from "@sharedComponents/cardHeader";
+import CardComment from "@sharedComponents/cardComment";
+import {ICardTextProps} from '@sharedComponents/cardText'
+import {IUser} from "@models/users";
+import {IComment} from "@models/comments";
 import _ from 'lodash';
 
 interface ICardProps {

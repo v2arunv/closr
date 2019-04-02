@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import styles from './styles';
-import Card from '../../shared/card';
-import CardText from '../../shared/cardText';
-import MockComments from '../../../../mocks/comments';
-import {getPosts, resetState} from "../../../actions/feed";
+import Card from '@sharedComponents/card';
+import CardText from '@sharedComponents/cardText';
+import MockComments from '@mocks/comments';
+import {getPosts, resetState} from "@actions/feed";
 import {connect} from 'react-redux';
-import {IFeedState} from '../../../reducers/feed';
+import {IFeedState} from '@reducers/feed';
 import _ from 'lodash';
-import {IComment} from '../../../models/comments';
-import {IUser} from '../../../models/users';
-import Loader from "../../shared/loader";
-import common from '../../../common/styles';
+import {IComment} from '@models/comments';
+import {IUser} from '@models/users';
+import Loader from "@sharedComponents/loader";
+import common from '@common/styles';
 
 interface IProps {
     navigation: any,

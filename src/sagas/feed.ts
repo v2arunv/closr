@@ -1,10 +1,10 @@
 import { put} from 'redux-saga/effects';
-import {convertPayloadToModel, IPost} from "../models/posts";
-import { convertPayloadToModel as convertPayloadToUserModel } from '../models/users';
-import {convertPayloadToModel as convertPayloadToCommentsModel, IComment} from '../models/comments';
-import {IFeedAction} from "../actions/feed";
+import {convertPayloadToModel, IPost} from '@models/posts';
+import { convertPayloadToModel as convertPayloadToUserModel } from '@models/users';
+import {convertPayloadToModel as convertPayloadToCommentsModel, IComment} from '@models/comments';
+import {IFeedAction} from '@actions/feed';
+import {IUser} from '@models/users';
 import _ from 'lodash';
-import {IUser} from "../models/users";
 
 export function* fetchFeed(action: IFeedAction) {
     try {

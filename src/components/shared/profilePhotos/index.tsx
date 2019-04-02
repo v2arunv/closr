@@ -16,7 +16,7 @@ interface IProps {
     isError: boolean,
     isLoading: boolean,
     albums: Array<IPhotoAlbum>,
-    onPress: () => void,
+    onPress: (photo: IPhoto) => void,
 }
 
 class ProfilePhotos extends Component<IProps> {

@@ -6,13 +6,13 @@ import {getUser, resetState} from "../../../actions/user";
 import {connect} from "react-redux";
 import {IUserState} from "../../../reducers/profile";
 import styles from "./styles";
-import ProfileHeader from "../../shared/profileHeader";
-import AboutMe from "../../shared/aboutMe";
-import ProfilePhotos from "../../shared/profilePhotos";
-import {IPhoto} from "../../../models/photos";
+import ProfileHeader from "@sharedComponents/profileHeader";
+import AboutMe from "@sharedComponents/aboutMe";
+import ProfilePhotos from "@sharedComponents/profilePhotos";
+import {IPhoto} from "@models/photos";
 import LottieView from 'lottie-react-native';
-import Loader from "../../shared/loader";
-import common from '../../../common/styles';
+import Loader from "@sharedComponents/loader";
+import common from '@common/styles';
 
 
 interface Props {

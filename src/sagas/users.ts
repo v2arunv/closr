@@ -1,4 +1,4 @@
-import {IUserAction} from "../actions/user";
+import {IUserAction} from "@actions/user";
 import { put, takeLatest, all } from 'redux-saga/effects';
 
 

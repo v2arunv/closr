@@ -1,7 +1,7 @@
 import {IUser} from "../models/users";
 
 export interface IUserAction {
-    type: 'GET_USER' | 'RESET_USER_STATE',
+    type: 'GET_USER' | 'RESET_USER_STATE' | 'GET_USER_SUCCESS' | 'GET_USER_ERROR',
     user?: IUser,
     id?: string,
 }

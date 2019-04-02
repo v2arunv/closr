@@ -1,6 +1,6 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
-import {IUserPhotosAction} from "../actions/userPhotos";
-import {convertAlbumPayloadIntoModel, convertPhotoPayloadIntoModel, IAlbum, IPhotoAlbum} from "../models/photos";
+import {IUserPhotosAction} from '@actions/userPhotos';
+import {convertAlbumPayloadIntoModel, convertPhotoPayloadIntoModel, IAlbum, IPhotoAlbum} from '@models/photos';
 import _ from 'lodash';
 
 export function* fetchPhotosForUsers(action: IUserPhotosAction) {
