@@ -16,8 +16,8 @@ const ProfileHeader = (props: IProps) => {
             <View style={styles.profilePictureContainer}>
                 <Image
                     style={styles.picture}
-                    source={{ uri: user.profilePictureURL }}
-                    defaultSource={require('../../../assets/images/monkey.png')}
+                    source={{ uri: 'http://www.sclance.com/pngs/image-placeholder-png/image_placeholder_png_698152.png' }}
+                    defaultSource={require('../../../assets/images/dp_placeholder.jpg')}
                 />
             </View>
             <View style={styles.nameContainer}>

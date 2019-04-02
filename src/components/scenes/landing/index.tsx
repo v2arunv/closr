@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import LottieView from "lottie-react-native";
 
@@ -22,9 +22,13 @@ export default class LandingPage extends Component<Props> {
                         onAnimationFinish={this.gotoFeed}
                     />
                 </View>
-                <Text style={styles.appName}>
-                    closr
-                </Text>
+                <TouchableOpacity
+                    onPress={this.gotoFeed}
+                >
+                    <Text style={styles.appName}>
+                        closr
+                    </Text>
+                </TouchableOpacity>
             </View>
         )
     }
