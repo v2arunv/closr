@@ -12,6 +12,7 @@ interface ICardProps {
     children: React.ReactElement<ICardTextProps>
     user: IUser,
     comments: Array<IComment>,
+    onProfileClick: () => void,
 }
 
 
@@ -27,6 +28,7 @@ const Card = (props: ICardProps) => {
                 <CardHeader
                     name={user.name || ''}
                     dpURL={user.profilePictureURL}
+                    onClick={props.onProfileClick}
                 />
             </View>
             <View style={styles.content}>

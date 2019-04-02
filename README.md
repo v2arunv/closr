@@ -13,3 +13,5 @@ A simple app made in React Native for close friends to keep in touch. Please ref
 This application uses the following frameworks/tools: 
 * [React Navigation](https://reactnavigation.org)
 * Typescript
+* [Redux Sagas](https://github.com/redux-saga/redux-saga)
+* [Lodash](https://lodash.com/)

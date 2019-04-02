@@ -1,37 +1,77 @@
 import React, {Component} from 'react';
-import {Button, Platform, StyleSheet, Text, View} from 'react-native';
+import {Animated, Button, Image, Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {IUser} from "../../../models/users";
 import {ITodo} from "../../../models/todo";
 import {getUser} from "../../../actions/user";
 import {connect} from "react-redux";
 import {IUserState} from "../../../reducers/profile";
 import styles from "./styles";
+import ProfileHeader from "../../shared/profileHeader";
+import AboutMe from "../../shared/aboutMe";
+import ProfilePhotos from "../../shared/profilePhotos";
+import {IPhoto} from "../../../models/photos";
+
 
 interface Props {
     navigation: any,
-    user: IUser,
-    getUser: any,
+    getUser: (userId: any) => void,
+    userId: number,
+    loading: boolean,
+    error: boolean,
+    user: IUser
 }
-class ProfilePage extends Component<Props> {
+interface State {
+    userId: number | null,
+}
+
+class ProfilePage extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
+        this.state = {
+            userId: null,
+        }
     }
 
-    componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<{}>, snapshot?: any): void {
-        console.log(this.props.user);
+    componentDidMount(): void {
+        this.setState({
+            ...this.state,
+            userId: this.props.navigation.getParam('userId', null),
+        }, () => {
+            this.props.getUser(this.state.userId);
+        });
+    }
+
+    gotoPhotoModal = (photo: IPhoto) => {
+        return () => {
+            this.props.navigation.navigate('PhotoViewer', {
+                photo,
+            });
+        }
     }
 
     render() {
-        return (
-            <View style={styles.container}>
-                <Text>
-                    Here's your best friend in the world
-                </Text>
-                <Button title={'FETCH'} onPress={() => {
-                    this.props.getUser('10')
-                }}/>
-            </View>
-        );
+        const {
+            user,
+        } = this.props;
+        return this.props.loading ?
+            (
+                <View>
+                    <Text>Loading</Text>
+                </View>
+            ) :
+            (
+                <ScrollView
+                    style={styles.container}
+                >
+                    <ProfileHeader user={user}/>
+                    <AboutMe user={user}/>
+                    <ProfilePhotos
+                        user={user}
+                        onPress={this.gotoPhotoModal}
+                    />
+                    <View style={styles.gap}/>
+                </ScrollView>
+            );
     }
 }
 
