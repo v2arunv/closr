@@ -24,8 +24,14 @@ const styles = StyleSheet.create({
         height: (common.fullHeight * 0.75),
     },
     image: {
+        zIndex: 1,
         width: common.fullWidth,
         height: (common.fullHeight * 0.75),
+    },
+    loaderContainer: {
+      zIndex: 300,
+      width: '100%',
+      height: '100%',
     },
     captionContainer: {
         position: 'absolute',
@@ -34,6 +40,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'flex-end',
+        flex: 1,
     },
     caption: {
         flex: 1,

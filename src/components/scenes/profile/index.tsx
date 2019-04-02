@@ -12,6 +12,8 @@ import ProfilePhotos from "../../shared/profilePhotos";
 import {IPhoto} from "../../../models/photos";
 import LottieView from 'lottie-react-native';
 import Loader from "../../shared/loader";
+import common from '../../../common/styles';
+
 
 interface Props {
     navigation: any,
@@ -38,7 +40,7 @@ class ProfilePage extends Component<Props, State> {
     static navigationOptions = {
         title: 'Profile',
         headerStyle: {
-            backgroundColor: '#2cb4f4',
+            backgroundColor: common.secondaryColor,
         },
         headerTintColor: '#fff',
         headerTitleStyle: {

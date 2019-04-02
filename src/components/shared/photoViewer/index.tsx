@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Image, Text, TouchableOpacity, View} from 'react-native';
+import {Button, Image, ImageBackground, Text, TouchableOpacity, View} from 'react-native';
 import styles from "./styles";
 import {IPhoto} from "../../../models/photos";
 import _ from 'lodash';
@@ -25,9 +25,22 @@ class PhotoViewer extends Component<Props, State> {
 
     componentDidMount() {
         this.setState({
-            ...this.state,
             photo: this.props.navigation.getParam('photo', null)
         });
+    }
+
+    renderLoader() {
+        return (
+            <View style={styles.loaderContainer}>
+                <Loader/>
+            </View>
+        )
+    }
+
+    finishLoading = () => {
+        this.setState({
+            isLoading: false,
+        })
     }
 
     renderSuccess(): React.ReactElement[] {
@@ -41,10 +54,15 @@ class PhotoViewer extends Component<Props, State> {
                     style={styles.imageContainer}
                     key={`modal-photo-container-${id}`}
                 >
-                    <Image
+                    <ImageBackground
                         style={styles.image}
                         source={{ uri: url }}
-                    />
+                        onLoadEnd={this.finishLoading}
+                    >
+                    {
+                        this.state.isLoading ? this.renderLoader() : null
+                    }
+                    </ImageBackground>
                 </View>,
                 <View
                     style={styles.captionContainer}
