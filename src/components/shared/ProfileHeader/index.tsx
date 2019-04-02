@@ -1,8 +1,8 @@
 import {Image, Text, View} from "react-native";
 import React from "react";
-import {IUser} from "../../../models/users";
+import {IUser} from "@models/users";
 import styles from "./styles";
-import common from '../../../common/styles';
+import common from '@common/styles';
 interface IProps {
     user: IUser,
 }

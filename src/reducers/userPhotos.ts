@@ -1,5 +1,5 @@
-import {IPhotoAlbum} from "../models/photos";
-import {IUserPhotosAction} from "../actions/userPhotos";
+import {IPhotoAlbum} from "@models/photos";
+import {IUserPhotosAction} from "@actions/userPhotos";
 
 export interface IUserPhotosState {
     albums: Array<IPhotoAlbum>,

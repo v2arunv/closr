@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     commentContainer: {
         padding: 5,
         marginLeft: 5,
-        backgroundColor: '#c1d0ff',
+        backgroundColor: common.commentBackgroundColor,
         width: '70%',
         borderRadius: 10
     },

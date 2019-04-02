@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {Button, Image, ImageBackground, Text, TouchableOpacity, View} from 'react-native';
 import styles from "./styles";
-import {IPhoto} from "../../../models/photos";
+import {IPhoto} from '@models/photos';
 import _ from 'lodash';
-import Loader from "../loader";
+import Loader from "../Loader";
+import {NavigationScreenProp} from "react-navigation";
 
 interface Props {
-    navigation: any,
+    navigation: NavigationScreenProp<any>,
 }
 
 interface State {
@@ -41,7 +42,7 @@ class PhotoViewer extends Component<Props, State> {
         this.setState({
             isLoading: false,
         })
-    }
+    };
 
     renderSuccess(): React.ReactElement[] {
         const {

@@ -1,10 +1,11 @@
 import { put} from 'redux-saga/effects';
-import {convertPayloadToModel, IPost} from "../models/posts";
-import { convertPayloadToModel as convertPayloadToUserModel } from '../models/users';
-import {convertPayloadToModel as convertPayloadToCommentsModel, IComment} from '../models/comments';
-import {IFeedAction} from "../actions/feed";
+import {convertPayloadToModel, IPost} from '@models/posts';
+import { convertPayloadToModel as convertPayloadToUserModel } from '@models/users';
+import {convertPayloadToModel as convertPayloadToCommentsModel, IComment} from '@models/comments';
+import {IFeedAction} from '@actions/feed';
+import {IUser} from '@models/users';
+import config from '@common/config'
 import _ from 'lodash';
-import {IUser} from "../models/users";
 
 export function* fetchFeed(action: IFeedAction) {
     try {
@@ -15,7 +16,7 @@ export function* fetchFeed(action: IFeedAction) {
         .then(response => response.json())
         .then(posts => {
             // Convert Post JSON data into our model
-            const convertedPosts: Array<IPost> = _.take(posts.map(convertPayloadToModel), 10);
+            const convertedPosts: Array<IPost> = _.take(posts.map(convertPayloadToModel), config.feedPostSize);
 
             // Create a list of unique user ids to fetch data for
             uniqueUsers = _.uniq(convertedPosts.map(p => p.userId));

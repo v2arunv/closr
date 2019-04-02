@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import common from '@common/styles';
 
 const styles = StyleSheet.create({
 
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     },
     username: {
         fontWeight: '300',
-        color: '#505050'
+        color: common.subtextColor,
     }
 });
 

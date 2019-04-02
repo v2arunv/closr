@@ -1,8 +1,8 @@
-import {IPost} from "../models/posts";
-import {IFeedAction} from "../actions/feed";
-import {IUser} from "../models/users";
+import {IPost} from "@models/posts";
+import {IFeedAction} from "@actions/feed";
+import {IUser} from "@models/users";
+import {IComment} from "@models/comments";
 import _ from 'lodash';
-import {IComment} from "../models/comments";
 
 export interface IFeedState {
     isLoading: boolean,

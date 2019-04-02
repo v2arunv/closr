@@ -1,13 +1,12 @@
 import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import React, {Component} from "react";
-import {IUser} from "../../../models/users";
+import {IUser} from "@models/users";
 import styles from "./styles";
-import common from '../../../common/styles';
-import Section from "../section";
-import {getUserPhotos} from "../../../actions/userPhotos";
+import Section from "../Section";
+import {getUserPhotos} from "@actions/userPhotos";
 import {connect} from "react-redux";
-import {IPhoto, IPhotoAlbum} from "../../../models/photos";
-import Loader from "../loader";
+import {IPhoto, IPhotoAlbum} from "@models/photos";
+import Loader from "../Loader";
 
 
 interface IProps {
@@ -16,7 +15,7 @@ interface IProps {
     isError: boolean,
     isLoading: boolean,
     albums: Array<IPhotoAlbum>,
-    onPress: () => void,
+    onPress: (photo: IPhoto) => void,
 }
 
 class ProfilePhotos extends Component<IProps> {
@@ -99,7 +98,7 @@ class ProfilePhotos extends Component<IProps> {
             isLoading ? this.renderLoading() : this.renderSuccess()
         );
     }
-};
+}
 
 const mapDispatchToProps = {
     getUserPhotos: getUserPhotos,

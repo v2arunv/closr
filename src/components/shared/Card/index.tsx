@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import styles from "./styles";
-import CardHeader from "../cardHeader";
-import CardComment from "../cardComment";
-import {ICardTextProps} from '../cardText'
-import {IUser} from "../../../models/users";
-import {IComment} from "../../../models/comments";
+import CardHeader from "@sharedComponents/CardHeader";
+import CardComment from "@sharedComponents/CardComment";
+import {ICardTextProps} from '@sharedComponents/CardText'
+import {IUser} from "@models/users";
+import {IComment} from "@models/comments";
 import _ from 'lodash';
+import common from '@common/styles';
 
 interface ICardProps {
     children: React.ReactElement<ICardTextProps>
@@ -23,7 +24,7 @@ const Card = (props: ICardProps) => {
     } = props;
     const comments: Array<IComment> = _.get(props, 'comments', []);
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, common.cardShadow ]}>
             <View style={styles.header}>
                 <CardHeader
                     name={user.name || ''}

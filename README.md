@@ -22,6 +22,23 @@ This application uses the following frameworks/tools:
 * [Lodash](https://lodash.com/)
 * [React Native Lottie](https://github.com/react-native-community/lottie-react-native)
 
+## Product Development
+
+You can refer to this [GitHub project board](https://github.com/v2arunv/closr/projects/2) to refer to which features were chosen to develop, in what order and what features were archived/dropped.
+
+The board is also helps in outlining the direction that could have been taken in developing new features
+
 ## Running on Android
 
 Depending on how your local environment is setup, you might need to modify the Dev Server settings as mentioned [here](https://stackoverflow.com/questions/42064283/react-nativecould-not-connect-to-development-server-on-android)
+
+
+## Adding a module/alias to the project
+
+You might have noticed that several components import with the refernce of `@models/user`. If you'd like to create a module such as this,
+you have to do 2 things:
+
+1. Append the path to `.babelrc.js` within the `alias` object.
+2. Append the path to `tsconfig.json` with the `paths` object.
+
+**NOTE**: Please pay attention to the difference in syntax between the 2 config files.

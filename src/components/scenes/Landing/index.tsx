@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import LottieView from "lottie-react-native";
+import {NavigationScreenProp} from "react-navigation";
 
 interface Props {
-    navigation: any
+    navigation: NavigationScreenProp<any>
 }
 export default class LandingPage extends Component<Props> {
     gotoFeed = () => {

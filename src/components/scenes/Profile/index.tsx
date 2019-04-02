@@ -1,22 +1,20 @@
 import React, {Component} from 'react';
-import {Animated, Button, EventSubscription, Image, Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {IUser} from "../../../models/users";
-import {ITodo} from "../../../models/todo";
-import {getUser, resetState} from "../../../actions/user";
+import {ScrollView, View} from 'react-native';
+import {IUser} from "@models/users";
+import {getUser, resetState} from "@actions/user";
 import {connect} from "react-redux";
-import {IUserState} from "../../../reducers/profile";
 import styles from "./styles";
-import ProfileHeader from "../../shared/profileHeader";
-import AboutMe from "../../shared/aboutMe";
-import ProfilePhotos from "../../shared/profilePhotos";
-import {IPhoto} from "../../../models/photos";
-import LottieView from 'lottie-react-native';
-import Loader from "../../shared/loader";
-import common from '../../../common/styles';
+import ProfileHeader from "@sharedComponents/ProfileHeader";
+import AboutMe from "@sharedComponents/AboutMe";
+import ProfilePhotos from "@sharedComponents/ProfilePhotos";
+import {IPhoto} from "@models/photos";
+import Loader from "@sharedComponents/Loader";
+import common from '@common/styles';
+import {NavigationScreenProp} from "react-navigation";
 
 
 interface Props {
-    navigation: any,
+    navigation: NavigationScreenProp<any>,
     getUser: (userId: any) => void,
     resetState: () => void,
     userId: number,
@@ -37,6 +35,18 @@ class ProfilePage extends Component<Props, State> {
         }
     }
 
+    componentDidMount(): void {
+        this.setState({
+            userId: this.props.navigation.getParam('userId', null),
+        }, () => {
+            this.props.getUser(this.state.userId);
+        });
+    }
+
+    componentWillUnmount(): void {
+        this.props.resetState();
+    }
+
     static navigationOptions = {
         title: 'Profile',
         headerStyle: {
@@ -48,26 +58,13 @@ class ProfilePage extends Component<Props, State> {
         },
     };
 
-    componentDidMount(): void {
-        this.setState({
-            ...this.state,
-            userId: this.props.navigation.getParam('userId', null),
-        }, () => {
-            this.props.getUser(this.state.userId);
-        });
-    }
-
-    componentWillUnmount(): void {
-        this.props.resetState();
-    }
-
     gotoPhotoModal = (photo: IPhoto) => {
         return () => {
             this.props.navigation.navigate('PhotoViewer', {
                 photo,
             });
         }
-    }
+    };
 
     render() {
         const {

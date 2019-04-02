@@ -1,20 +1,21 @@
 import React, {Component} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import styles from './styles';
-import Card from '../../shared/card';
-import CardText from '../../shared/cardText';
-import MockComments from '../../../../mocks/comments';
-import {getPosts, resetState} from "../../../actions/feed";
+import Card from '@sharedComponents/Card';
+import CardText from '@sharedComponents/CardText';
+import {getPosts, resetState} from "@actions/feed";
 import {connect} from 'react-redux';
-import {IFeedState} from '../../../reducers/feed';
+import {IFeedState} from '@reducers/feed';
+import {IComment} from '@models/comments';
+import {IUser} from '@models/users';
+import Loader from "@sharedComponents/Loader";
+import common from '@common/styles';
 import _ from 'lodash';
-import {IComment} from '../../../models/comments';
-import {IUser} from '../../../models/users';
-import Loader from "../../shared/loader";
-import common from '../../../common/styles';
+import {NavigationScreenProp} from "react-navigation";
+
 
 interface IProps {
-    navigation: any,
+    navigation: NavigationScreenProp<any>,
     getPosts: () => void,
     resetState: () => void,
     feedState: IFeedState,
@@ -29,14 +30,19 @@ interface IState {
     cards: Array<ICardInfo>
 }
 
-const comments = [MockComments];
-
 class FeedPage extends Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state = {
             cards: [],
         }
+    }
+    componentDidMount(): void {
+        this.props.getPosts();
+    }
+
+    componentWillUnmount(): void {
+        this.props.resetState();
     }
 
     static navigationOptions = {
@@ -50,13 +56,6 @@ class FeedPage extends Component<IProps, IState> {
         },
     };
 
-    componentDidMount(): void {
-        this.props.getPosts();
-    }
-
-    componentWillUnmount(): void {
-        this.props.resetState();
-    }
 
     prepareFeed() {
         const {
@@ -70,7 +69,6 @@ class FeedPage extends Component<IProps, IState> {
             }
         });
         this.setState({
-            ...this.state,
             cards,
         });
     }
