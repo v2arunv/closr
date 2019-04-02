@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import styles from './styles';
 import Card from '../../shared/card';
 import CardText from '../../shared/cardText';
@@ -10,6 +10,7 @@ import {IFeedState} from '../../../reducers/feed';
 import _ from 'lodash';
 import {IComment} from '../../../models/comments';
 import {IUser} from '../../../models/users';
+import Loader from "../../shared/loader";
 
 interface IProps {
     navigation: any,
@@ -74,29 +75,34 @@ class FeedPage extends Component<IProps, IState> {
         }
     }
 
-    render() {
+    renderSuccess() {
         return (
             <View style={styles.container}>
-                <ScrollView>
-                    {(this.state.cards.map((card: any, index: number) => {
-                        return (
-                            <Card
-                                user={card.user}
-                                comments={card.comments}
-                                key={index}
-                                onProfileClick={this.navigateToProfileGenerator(card.user.id)}
-                            >
+            <ScrollView>
+                {(this.state.cards.map((card: any, index: number) => {
+                    return (
+                        <Card
+                            user={card.user}
+                            comments={card.comments}
+                            key={index}
+                            onProfileClick={this.navigateToProfileGenerator(card.user.id)}
+                        >
                             <CardText>
                                 <Text>
                                     {card.body}
                                 </Text>
                             </CardText>
                         </Card>
-                        )
-                    }))}
-                </ScrollView>
+                    )
+                }))}
+            </ScrollView>
+        </View>
+        );
+    }
 
-            </View>
+    render() {
+        return (
+            this.props.feedState.isLoading == true ? <Loader/> : this.renderSuccess()
         );
     }
 }

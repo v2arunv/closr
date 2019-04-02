@@ -11,6 +11,7 @@ import AboutMe from "../../shared/aboutMe";
 import ProfilePhotos from "../../shared/profilePhotos";
 import {IPhoto} from "../../../models/photos";
 import LottieView from 'lottie-react-native';
+import Loader from "../../shared/loader";
 
 interface Props {
     navigation: any,
@@ -60,9 +61,7 @@ class ProfilePage extends Component<Props, State> {
         } = this.props;
         return this.props.loading ?
             (
-                <View style={{ width: '100%', height: '100%', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <LottieView source={require('../../../assets/lottie/loader.json')} autoPlay loop />
-                </View>
+                <Loader/>
             ) :
             (
                 <ScrollView

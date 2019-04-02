@@ -7,6 +7,7 @@ import Section from "../section";
 import {getUserPhotos} from "../../../actions/userPhotos";
 import {connect} from "react-redux";
 import {IPhoto, IPhotoAlbum} from "../../../models/photos";
+import Loader from "../loader";
 
 
 interface IProps {
@@ -81,10 +82,8 @@ class ProfilePhotos extends Component<IProps> {
 
     renderLoading(): React.ReactElement<any> {
         return (
-            <Section>
-                <Text>
-                    LOADING
-                </Text>
+            <Section style={styles.loaderContainer}>
+                <Loader/>
             </Section>
         )
     }
