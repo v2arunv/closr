@@ -1,8 +1,8 @@
-import {Image, Linking, Text, TouchableOpacity, View} from "react-native";
+import {Image, Linking, Text, TouchableOpacity} from "react-native";
 import React from "react";
 import {IUser} from "@models/users";
 import styles from "./styles";
-import Section from "@sharedComponents/section";
+import Section from "@sharedComponents/Section";
 
 
 interface IProps {

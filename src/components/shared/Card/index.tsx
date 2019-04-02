@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import styles from "./styles";
-import CardHeader from "@sharedComponents/cardHeader";
-import CardComment from "@sharedComponents/cardComment";
-import {ICardTextProps} from '@sharedComponents/cardText'
+import CardHeader from "@sharedComponents/CardHeader";
+import CardComment from "@sharedComponents/CardComment";
+import {ICardTextProps} from '@sharedComponents/CardText'
 import {IUser} from "@models/users";
 import {IComment} from "@models/comments";
 import _ from 'lodash';

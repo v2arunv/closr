@@ -3,7 +3,7 @@ import {Button, Image, ImageBackground, Text, TouchableOpacity, View} from 'reac
 import styles from "./styles";
 import {IPhoto} from '@models/photos';
 import _ from 'lodash';
-import Loader from "../loader";
+import Loader from "../Loader";
 import {NavigationScreenProp} from "react-navigation";
 
 interface Props {
@@ -42,7 +42,7 @@ class PhotoViewer extends Component<Props, State> {
         this.setState({
             isLoading: false,
         })
-    }
+    };
 
     renderSuccess(): React.ReactElement[] {
         const {

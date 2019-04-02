@@ -1,18 +1,16 @@
 import React, {Component} from 'react';
-import {Animated, Button, EventSubscription, Image, Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {IUser} from "../../../models/users";
-import {ITodo} from "../../../models/todo";
-import {getUser, resetState} from "../../../actions/user";
+import {ScrollView, View} from 'react-native';
+import {IUser} from "@models/users";
+import {getUser, resetState} from "@actions/user";
 import {connect} from "react-redux";
-import {IUserState} from "../../../reducers/profile";
 import styles from "./styles";
-import ProfileHeader from "@sharedComponents/profileHeader";
-import AboutMe from "@sharedComponents/aboutMe";
-import ProfilePhotos from "@sharedComponents/profilePhotos";
+import ProfileHeader from "@sharedComponents/ProfileHeader";
+import AboutMe from "@sharedComponents/AboutMe";
+import ProfilePhotos from "@sharedComponents/ProfilePhotos";
 import {IPhoto} from "@models/photos";
-import LottieView from 'lottie-react-native';
-import Loader from "@sharedComponents/loader";
+import Loader from "@sharedComponents/Loader";
 import common from '@common/styles';
+import {NavigationScreenProp} from "react-navigation";
 
 
 interface Props {
@@ -37,17 +35,6 @@ class ProfilePage extends Component<Props, State> {
         }
     }
 
-    static navigationOptions = {
-        title: 'Profile',
-        headerStyle: {
-            backgroundColor: common.secondaryColor,
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            fontWeight: 'bold',
-        },
-    };
-
     componentDidMount(): void {
         this.setState({
             userId: this.props.navigation.getParam('userId', null),
@@ -60,13 +47,24 @@ class ProfilePage extends Component<Props, State> {
         this.props.resetState();
     }
 
+    static navigationOptions = {
+        title: 'Profile',
+        headerStyle: {
+            backgroundColor: common.secondaryColor,
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+    };
+
     gotoPhotoModal = (photo: IPhoto) => {
         return () => {
             this.props.navigation.navigate('PhotoViewer', {
                 photo,
             });
         }
-    }
+    };
 
     render() {
         const {

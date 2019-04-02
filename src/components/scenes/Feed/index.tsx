@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import styles from './styles';
-import Card from '@sharedComponents/card';
-import CardText from '@sharedComponents/cardText';
+import Card from '@sharedComponents/Card';
+import CardText from '@sharedComponents/CardText';
 import {getPosts, resetState} from "@actions/feed";
 import {connect} from 'react-redux';
 import {IFeedState} from '@reducers/feed';
 import {IComment} from '@models/comments';
 import {IUser} from '@models/users';
-import Loader from "@sharedComponents/loader";
+import Loader from "@sharedComponents/Loader";
 import common from '@common/styles';
 import _ from 'lodash';
 import {NavigationScreenProp} from "react-navigation";
@@ -37,6 +37,13 @@ class FeedPage extends Component<IProps, IState> {
             cards: [],
         }
     }
+    componentDidMount(): void {
+        this.props.getPosts();
+    }
+
+    componentWillUnmount(): void {
+        this.props.resetState();
+    }
 
     static navigationOptions = {
         title: 'Feed',
@@ -49,13 +56,6 @@ class FeedPage extends Component<IProps, IState> {
         },
     };
 
-    componentDidMount(): void {
-        this.props.getPosts();
-    }
-
-    componentWillUnmount(): void {
-        this.props.resetState();
-    }
 
     prepareFeed() {
         const {

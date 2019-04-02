@@ -10,16 +10,16 @@
 
 import React, {Component} from 'react';
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import ProfilePage from "./src/components/scenes/profile";
-import LandingPage from "./src/components/scenes/landing";
+import ProfilePage from "./src/components/scenes/Profile";
+import LandingPage from "./src/components/scenes/Landing";
 import reducer from './src/reducers/';
 import {applyMiddleware, compose, createStore} from 'redux'
 import { Provider } from 'react-redux'
 import {composeWithDevTools, devToolsEnhancer} from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from './src/sagas';
-import FeedPage from "./src/components/scenes/feed";
-import PhotoViewer from "./src/components/shared/photoViewer";
+import FeedPage from "./src/components/scenes/Feed";
+import PhotoViewer from "./src/components/shared/PhotoViewer";
 
 const sagaMiddleware = createSagaMiddleware();
 

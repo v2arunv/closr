@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
-import {Image, Platform, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {Image, Text, View} from 'react-native';
 import styles from "./styles";
-import {IUser} from "@models/users";
 
 interface ICardComment {
     username: string,
@@ -20,7 +19,7 @@ const CardComment = (props: ICardComment) => {
             <View style={styles.pictureContainer}>
                 <Image
                     style={styles.picture}
-                    source={{ uri: 'http://www.sclance.com/pngs/image-placeholder-png/image_placeholder_png_698152.png'}}
+                    source={{ uri: profilePictureURL == null ? profilePictureURL : 'http://www.sclance.com/pngs/image-placeholder-png/image_placeholder_png_698152.png'}}
                     defaultSource={require('../../../assets/images/dp_placeholder.jpg')}
                 />
             </View>
