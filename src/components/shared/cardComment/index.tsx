@@ -20,7 +20,7 @@ const CardComment = (props: ICardComment) => {
             <View style={styles.pictureContainer}>
                 <Image
                     style={styles.picture}
-                    source={{ uri: profilePictureURL}}
+                    source={{ uri: 'http://www.sclance.com/pngs/image-placeholder-png/image_placeholder_png_698152.png'}}
                     defaultSource={require('../../../assets/images/dp_placeholder.jpg')}
                 />
             </View>

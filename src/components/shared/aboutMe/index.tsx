@@ -1,4 +1,4 @@
-import {Image, Text, TouchableOpacity, View} from "react-native";
+import {Image, Linking, Text, TouchableOpacity, View} from "react-native";
 import React from "react";
 import {IUser} from "../../../models/users";
 import styles from "./styles";
@@ -10,13 +10,40 @@ interface IProps {
     user: IUser,
 }
 
+const openEmail = (email:string) => {
+    return () => {
+        Linking.canOpenURL(`mailto:${email}`)
+            .then((supported) => {
+                if (supported) {
+                    Linking.openURL(`mailto:${email}`);
+                }
+            }).catch((err) => {
+            console.log('error Linking', err)
+        })
+    }
+};
+
+const openPhone = (phone:string) => {
+    return () => {
+        Linking.canOpenURL(`tel:${phone}`)
+            .then((supported) => {
+                if (supported) {
+                    Linking.openURL(`tel:${phone}`);
+                }
+            }).catch((err) => {
+            console.log('error Linking', err)
+        })
+    }
+};
+
 const AboutMe = (props: IProps) => {
     const {
         user,
     } = props;
     return(
         <Section>
-            <View
+            <TouchableOpacity
+                onPress={openPhone(user.phone)}
                 style={styles.row}
             >
                 <Image
@@ -28,9 +55,10 @@ const AboutMe = (props: IProps) => {
                 >
                     { user.phone }
                 </Text>
-            </View>
-            <View
+            </TouchableOpacity>
+            <TouchableOpacity
                 style={[styles.row, styles.lastRow]}
+                onPress={openEmail(user.email)}
             >
                 <Image
                     source={require('../../../assets/images/send-email-2.png')}
@@ -41,7 +69,7 @@ const AboutMe = (props: IProps) => {
                 >
                     { user.email }
                 </Text>
-            </View>
+            </TouchableOpacity>
         </Section>
     )
 };

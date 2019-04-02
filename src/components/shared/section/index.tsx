@@ -7,7 +7,7 @@ import common from '../../../common/styles';
 
 interface IProps {
     children: React.ReactElement<any> | Array<React.ReactElement<any>>,
-    style: any
+    style?: any
 }
 
 const Section = (props: IProps) => {
