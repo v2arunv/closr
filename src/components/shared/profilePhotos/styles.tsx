@@ -18,14 +18,17 @@ const styles = StyleSheet.create({
     },
     albumHeader: {
     },
+    scrollContainer: {
+        height: 70,
+    },
     imageContainer: {
         margin: 5,
-        width: 30,
-        height: 30,
+        width: 60,
+        height: 60,
     },
     thumbnail: {
-        width: 25,
-        height: 25,
+        width: 60,
+        height: 60,
     },
     albumSectionHeader: {
         marginTop: 5,

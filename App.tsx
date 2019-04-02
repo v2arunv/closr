@@ -19,6 +19,7 @@ import {composeWithDevTools, devToolsEnhancer} from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from './src/sagas';
 import FeedPage from "./src/components/scenes/feed";
+import PhotoViewer from "./src/components/shared/photoViewer";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -38,7 +39,19 @@ const AppNavigator = createStackNavigator({
     initialRouteName: "Landing"
 });
 
-const Navigation = createAppContainer(AppNavigator);
+const RootStack = createStackNavigator( {
+    Main: {
+        screen: AppNavigator,
+    },
+    PhotoViewer: {
+        screen: PhotoViewer
+    },
+}, {
+    mode: 'modal',
+    headerMode: 'none'
+})
+
+const Navigation = createAppContainer(RootStack);
 
 interface Props {}
 class App extends Component<Props> {

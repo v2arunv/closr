@@ -9,6 +9,7 @@ import styles from "./styles";
 import ProfileHeader from "../../shared/profileHeader";
 import AboutMe from "../../shared/aboutMe";
 import ProfilePhotos from "../../shared/profilePhotos";
+import {IPhoto} from "../../../models/photos";
 
 
 interface Props {
@@ -40,6 +41,14 @@ class ProfilePage extends Component<Props, State> {
         });
     }
 
+    gotoPhotoModal = (photo: IPhoto) => {
+        return () => {
+            this.props.navigation.navigate('PhotoViewer', {
+                photo,
+            });
+        }
+    }
+
     render() {
         const {
             user,
@@ -56,7 +65,10 @@ class ProfilePage extends Component<Props, State> {
                 >
                     <ProfileHeader user={user}/>
                     <AboutMe user={user}/>
-                    <ProfilePhotos user={user}/>
+                    <ProfilePhotos
+                        user={user}
+                        onPress={this.gotoPhotoModal}
+                    />
                     <View style={styles.gap}/>
                 </ScrollView>
             );

@@ -6,7 +6,7 @@ import common from '../../../common/styles';
 import Section from "../section";
 import {getUserPhotos} from "../../../actions/userPhotos";
 import {connect} from "react-redux";
-import {IPhotoAlbum} from "../../../models/photos";
+import {IPhoto, IPhotoAlbum} from "../../../models/photos";
 
 
 interface IProps {
@@ -14,7 +14,8 @@ interface IProps {
     getUserPhotos: (id: number) => void,
     isError: boolean,
     isLoading: boolean,
-    albums: Array<IPhotoAlbum>
+    albums: Array<IPhotoAlbum>,
+    onPress: () => void,
 }
 
 class ProfilePhotos extends Component<IProps> {
@@ -22,15 +23,13 @@ class ProfilePhotos extends Component<IProps> {
         this.props.getUserPhotos(this.props.user.id);
     }
 
-    componentDidUpdate() {
-        console.log(this.props);
-    }
-
-
     renderAlbum(album: IPhotoAlbum, albumIndex: number): React.ReactElement<any> {
         const {
             photos,
         } = album;
+        const {
+            onPress
+        } = this.props;
         return(
             <View
                 style={styles.albumHeader}
@@ -41,12 +40,14 @@ class ProfilePhotos extends Component<IProps> {
                 </Text>
                 <ScrollView
                     horizontal
+                    style={styles.scrollContainer}
                 >
                     {photos.map((photo, photoIndex) => {
                         return (
-                            <View
+                            <TouchableOpacity
                                 style={styles.imageContainer}
                                 key={`photo-container-${photoIndex}`}
+                                onPress={onPress(photo)}
                             >
                                 <Image
                                     style={styles.thumbnail}
@@ -54,7 +55,7 @@ class ProfilePhotos extends Component<IProps> {
                                     source={{ uri: photo.thumbnailUrl}}
                                     defaultSource={require('../../../assets/images/beach-parasol-water-1.png')}
                                 />
-                            </View>
+                            </TouchableOpacity>
                         )
                     })}
                 </ScrollView>
