@@ -17,7 +17,7 @@ const ProfileHeader = (props: IProps) => {
                 <Image
                     style={styles.picture}
                     source={{ uri: user.profilePictureURL }}
-                    defaultSource={require('../../../assets/images/monkey.png')}
+                    defaultSource={require('../../../assets/images/dp_placeholder.jpg')}
                 />
             </View>
             <View style={styles.nameContainer}>

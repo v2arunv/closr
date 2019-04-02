@@ -3,6 +3,7 @@ import {Button, Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from "./styles";
 import {IPhoto} from "../../../models/photos";
 import _ from 'lodash';
+import Loader from "../loader";
 
 interface Props {
     navigation: any,
@@ -10,13 +11,15 @@ interface Props {
 
 interface State {
     photo: IPhoto | null
+    isLoading: boolean
 }
 
 class PhotoViewer extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            photo: null
+            photo: null,
+            isLoading: true,
         }
     }
 
@@ -56,11 +59,7 @@ class PhotoViewer extends Component<Props, State> {
 
     renderLoading(): React.ReactElement {
         return(
-            <View>
-                <Text style={{ color: '#FFFFFF', fontSize: 46}}>
-                    LOADING
-                </Text>
-            </View>
+                <Loader/>
         )
     }
 
