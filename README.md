@@ -1,6 +1,6 @@
 # closr
 
-A simple app made in React Native for close friends to keep in touch. Please refer to specifications.md to look at all provided [specifications](https://github.com/v2arunv/closr/blob/develop/specifications.md)
+A simple app made in React Native for close friends to keep in touch. Please refer to [specifications.md](https://github.com/v2arunv/closr/blob/develop/specifications.md) to look at all provided specifications
 
 ## Setting up Environment:
 
