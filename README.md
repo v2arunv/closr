@@ -1,6 +1,6 @@
 # closr
 
-A simple app made in React Native for close friends to keep in touch. Please refer to specifications.md to look at all provided specifications
+A simple app made in React Native for close friends to keep in touch. Please refer to specifications.md to look at all provided [specifications](https://github.com/v2arunv/closr/blob/develop/specifications.md)
 
 ## Setting up Environment:
 
@@ -13,11 +13,13 @@ A simple app made in React Native for close friends to keep in touch. Please ref
 7) **OPTIONAL**: You might have to open the Xcode project and build the project in order for everything to work
 8) Run `react-native run-ios` 
 
+You can run `npm test` to trigger the snapshot tests that were written for the shared components
+
 ## Features
 
 1) **Feed** 📃: The feed is automatically navigated to after displaying the splash animation.    **NOTE**: The number of posts are limited to 10 by default. This can be increased or decreased by changing the value of `feedPostSize` in `common/config.ts`
 2) **User Profile** 👦🏽 👧🏽 : This page can be visited by clicking on the profile picture of a user within the feed page. Please note that the user profile *cannot* be accessed by clicking on the display picture of user comments
-3) **Contact** 📞 ✉️ : The email address and phone numbers open the Dialer/Phone and Email application within iOS and Android. **NOTE**: This will not work on an iOS Emulator since you need a real device to use open the Phone and Mail app. However, it should work on an Android Emulator
+3) **Contact** 📞 ✉️ : The email address and phone numbers open the Dialer/Phone and Email application within iOS and Android. **NOTE**: This will not work on an iOS Emulator since you need a real device to use the Phone and Mail app. However, it should work on an Android Emulator
 4) **Photo Gallery** 🌅: You can view all the photos uploaded by a user by visiting their user profile and horizontally scrolling through the albums. Clicking on an individual photo will bring up the viewer. The viewer can be dismissed by dragging it down from the top or by clicking on the 'X' icon.
 
 ## Frameworks/Tools:
