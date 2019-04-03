@@ -4,7 +4,7 @@ A simple app made in React Native for close friends to keep in touch. Please ref
 
 ## Setting up Environment:
 
-1) Use nvm and install Node v10.15.3
+1) Use [nvm](https://github.com/creationix/nvm) and install Node v10.15.3
 2) Install react-native-cli globally by running `npm install -g react-native-cli`
 3) Copy `prepare-commit-message` to the project's `.git/hooks/` in order to prepend the feature ID/name to commit message
 4) Run `npm install`
@@ -35,7 +35,7 @@ This application uses the following frameworks/tools:
 
 You can refer to this [GitHub project board](https://github.com/v2arunv/closr/projects/2) to refer to which features were chosen to develop, in what order and what features were archived/dropped.
 
-The board is also helps in outlining the direction that could have been taken in developing new features
+The board also helps in outlining the direction that could have been taken in developing new features
 
 ## Running on Android
 
